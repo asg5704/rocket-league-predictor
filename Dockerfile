@@ -1,7 +1,7 @@
 # --- Stage 1: build the React frontend ---------------------------------
 FROM node:22-alpine AS frontend
 WORKDIR /app
-RUN corepack enable && corepack prepare pnpm@11.5.2 --activate
+RUN npm install -g pnpm@11.5.2
 COPY frontend/package.json frontend/pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 COPY frontend/ ./
