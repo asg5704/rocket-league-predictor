@@ -1,0 +1,1957 @@
+{
+  "meta": {
+    "extracted_at": "2026-03-10T04:33:45Z",
+    "source_groups": [
+      "boston-major-v1upbparf4"
+    ],
+    "total_replays_sampled": 30,
+    "total_players_found": 36,
+    "note": "platform_id, display_names, frequent_teammates are auto-extracted. real_name, country, and team_history must be filled in manually."
+  },
+  "players": [
+    {
+      "platform_id": "76561198960239428",
+      "display_names": [
+        "vatira"
+      ],
+      "replay_count": 1,
+      "team_names_seen": [
+        "KARMINE CORP"
+      ],
+      "source_groups": [
+        "rlcs-3kmmf7pcsx"
+      ],
+      "real_name": "Axel T.",
+      "country": "France",
+      "team_history": [
+        {
+          "team": "Team Queso",
+          "team_id": "team-queso",
+          "region": "EU",
+          "date_from": "2021-09-24",
+          "date_to": "2022-04-27"
+        },
+        {
+          "team": "Moist Esports",
+          "team_id": "moist",
+          "region": "EU",
+          "date_from": "2022-05-05",
+          "date_to": "2022-09-20"
+        },
+        {
+          "team": "Karmine Corp",
+          "team_id": "karmine-corp",
+          "region": "EU",
+          "date_from": "2022-10-02",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198289610054",
+          "display_name": "Atow",
+          "shared_replays": 1
+        },
+        {
+          "platform_id": "76561199013030566",
+          "display_name": "juicy",
+          "shared_replays": 1
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198289610054",
+      "display_names": [
+        "Atow"
+      ],
+      "replay_count": 1,
+      "team_names_seen": [
+        "KARMINE CORP"
+      ],
+      "source_groups": [
+        "rlcs-3kmmf7pcsx"
+      ],
+      "real_name": "Tristan S.",
+      "country": "Belgium",
+      "team_history": [
+        {
+          "team": "Team Liquid",
+          "team_id": "team-liquid",
+          "region": "EU",
+          "date_from": "2022-02-11",
+          "date_to": "2023-11-10"
+        },
+        {
+          "team": "Karmine Corp",
+          "team_id": "karmine-corp",
+          "region": "EU",
+          "date_from": "2023-12-02",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198960239428",
+          "display_name": "vatira",
+          "shared_replays": 1
+        },
+        {
+          "platform_id": "76561199013030566",
+          "display_name": "juicy",
+          "shared_replays": 1
+        }
+      ]
+    },
+    {
+      "platform_id": "76561199013030566",
+      "display_names": [
+        "juicy"
+      ],
+      "replay_count": 1,
+      "team_names_seen": [
+        "KARMINE CORP"
+      ],
+      "source_groups": [
+        "rlcs-3kmmf7pcsx"
+      ],
+      "real_name": "Charles S.",
+      "country": "France",
+      "team_history": [
+        {
+          "team": "Moist ESports",
+          "team_id": "moist",
+          "region": "EU",
+          "date_from": "2023-01-12",
+          "date_to": "2024-01-04"
+        },
+        {
+          "team": "Gentle Mates Alpine",
+          "team_id": "gentle-mates",
+          "region": "EU",
+          "date_from": "2024-01-04",
+          "date_to": "2025-10-08"
+        },
+        {
+          "team": "Karmine Corp",
+          "team_id": "karmine-corp",
+          "region": "EU",
+          "date_from": "2022-10-12",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198960239428",
+          "display_name": "vatira",
+          "shared_replays": 1
+        },
+        {
+          "platform_id": "76561198289610054",
+          "display_name": "Atow",
+          "shared_replays": 1
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198799189161",
+      "display_names": [
+        "Daniel"
+      ],
+      "replay_count": 1,
+      "team_names_seen": [
+        "NRG ESPORTS"
+      ],
+      "source_groups": [
+        "rlcs-3kmmf7pcsx"
+      ],
+      "real_name": "Daniel P.",
+      "country": "USA",
+      "team_history": [
+        {
+          "team": "Spacestation Gaming",
+          "team_id": "ssg",
+          "region": "NA",
+          "date_from": "2022-01-12",
+          "date_to": "2023-04-08"
+        },
+        {
+          "team": "Version 1",
+          "team_id": "version-1",
+          "region": "NA",
+          "date_from": "2023-04-08",
+          "date_to": "2023-12-04"
+        },
+        {
+          "team": "G2 Esports",
+          "team_id": "g2",
+          "region": "NA",
+          "date_from": "2023-12-07",
+          "date_to": "2024-11-07"
+        },
+        {
+          "team": "NRG ESPORTS",
+          "team_id": "nrg",
+          "region": "NA",
+          "date_from": "2024-12-20",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198994386260",
+          "display_name": "Atomic",
+          "shared_replays": 1
+        },
+        {
+          "platform_id": "76561198284393407",
+          "display_name": "BeastMode",
+          "shared_replays": 1
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198994386260",
+      "display_names": [
+        "Atomic"
+      ],
+      "replay_count": 1,
+      "team_names_seen": [
+        "NRG ESPORTS"
+      ],
+      "source_groups": [
+        "rlcs-3kmmf7pcsx"
+      ],
+      "real_name": "Massimo F.",
+      "country": "USA",
+      "team_history": [
+        {
+          "team": "Team Envy",
+          "team_id": "team-envy",
+          "region": "NA",
+          "date_from": "2020-04-25",
+          "date_to": "2022-01-02"
+        },
+        {
+          "team": "G2 Esports",
+          "team_id": "g2",
+          "region": "NA",
+          "date_from": "2022-01-02",
+          "date_to": "2024-11-07"
+        },
+        {
+          "team": "NRG ESPORTS",
+          "team_id": "nrg",
+          "region": "NA",
+          "date_from": "2024-12-20",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198799189161",
+          "display_name": "Daniel",
+          "shared_replays": 1
+        },
+        {
+          "platform_id": "76561198284393407",
+          "display_name": "BeastMode",
+          "shared_replays": 1
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198284393407",
+      "display_names": [
+        "BeastMode"
+      ],
+      "replay_count": 1,
+      "team_names_seen": [
+        "NRG ESPORTS"
+      ],
+      "source_groups": [
+        "rlcs-3kmmf7pcsx"
+      ],
+      "real_name": "Landon K.",
+      "country": "USA",
+      "team_history": [
+        {
+          "team": "Version 1",
+          "team_id": "version-1",
+          "region": "NA",
+          "date_from": "2022-01-02",
+          "date_to": "2023-12-04"
+        },
+        {
+          "team": "G2 Esports",
+          "team_id": "g2",
+          "region": "NA",
+          "date_from": "2023-12-07",
+          "date_to": "2024-11-07"
+        },
+        {
+          "team": "NRG ESPORTS",
+          "team_id": "nrg",
+          "region": "NA",
+          "date_from": "2024-12-20",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198799189161",
+          "display_name": "Daniel",
+          "shared_replays": 1
+        },
+        {
+          "platform_id": "76561198994386260",
+          "display_name": "Atomic",
+          "shared_replays": 1
+        }
+      ]
+    },
+    {
+      "platform_id": "76561199031413358",
+      "display_names": [
+        "dralii"
+      ],
+      "replay_count": 18,
+      "team_names_seen": [
+        "TEAM FALCONS"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Samy Hajji",
+      "country": "Morocco",
+      "team_history": [
+        {
+          "team": "Team BDS",
+          "team_id": "bds",
+          "region": "EU",
+          "date_from": "2023-10-27",
+          "date_to": "2024-10-02"
+        },
+        {
+          "team": "Karmine Corp",
+          "team_id": "karmine-corp",
+          "region": "EU",
+          "date_from": "2024-10-02",
+          "date_to": "2025-09-19"
+        },
+        {
+          "team": "Team Falcons",
+          "team_id": "team-falcons",
+          "region": "MENA",
+          "date_from": "2025-09-19",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198980777579",
+          "display_name": "Kiileerrz",
+          "shared_replays": 18
+        },
+        {
+          "platform_id": "76561199017029799",
+          "display_name": "Rw9",
+          "shared_replays": 18
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198980777579",
+      "display_names": [
+        "Kiileerrz"
+      ],
+      "replay_count": 18,
+      "team_names_seen": [
+        "TEAM FALCONS"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Yazeed A.B.",
+      "country": "Saudi Arabia",
+      "team_history": [
+        {
+          "team": "KRN",
+          "team_id": "krn",
+          "region": "MENA",
+          "date_from": "2022-09-10",
+          "date_to": "2022-10-26"
+        },
+        {
+          "team": "Rule One",
+          "team_id": "rule-one",
+          "region": "MENA",
+          "date_from": "2022-10-26",
+          "date_to": "2023-12-03"
+        },
+        {
+          "team": "Team Falcons",
+          "team_id": "team-falcons",
+          "region": "MENA",
+          "date_from": "2023-12-09",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561199031413358",
+          "display_name": "dralii",
+          "shared_replays": 18
+        },
+        {
+          "platform_id": "76561199017029799",
+          "display_name": "Rw9",
+          "shared_replays": 18
+        }
+      ]
+    },
+    {
+      "platform_id": "76561199017029799",
+      "display_names": [
+        "Rw9"
+      ],
+      "replay_count": 18,
+      "team_names_seen": [
+        "TEAM FALCONS"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Saleh A.B.",
+      "country": "Saudi Arabia",
+      "team_history": [
+        {
+          "team": "KRN",
+          "team_id": "krn",
+          "region": "MENA",
+          "date_from": "2022-09-10",
+          "date_to": "2022-10-26"
+        },
+        {
+          "team": "Rule One",
+          "team_id": "rule-one",
+          "region": "MENA",
+          "date_from": "2022-10-26",
+          "date_to": "2023-12-03"
+        },
+        {
+          "team": "Team Falcons",
+          "team_id": "team-falcons",
+          "region": "MENA",
+          "date_from": "2023-12-09",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561199031413358",
+          "display_name": "dralii",
+          "shared_replays": 18
+        },
+        {
+          "platform_id": "76561198980777579",
+          "display_name": "Kiileerrz",
+          "shared_replays": 18
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198838703744",
+      "display_names": [
+        "nass"
+      ],
+      "replay_count": 7,
+      "team_names_seen": [
+        "GENTLE MATES"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Nassim B.",
+      "country": "Belgium",
+      "team_history": [
+        {
+          "team": "M80",
+          "team_id": "m80",
+          "region": "EU",
+          "date_from": "2023-12-06",
+          "date_to": "2024-07-08"
+        },
+        {
+          "team": "Ninjas in Pyjamas",
+          "team_id": "nip",
+          "region": "EU",
+          "date_from": "2024-12-27",
+          "date_to": "2025-10-03"
+        },
+        {
+          "team": "Gentle Mates Alpine",
+          "team_id": "gentle-mates",
+          "region": "EU",
+          "date_from": "2025-10-11",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198381037239",
+          "display_name": "Oski",
+          "shared_replays": 7
+        },
+        {
+          "platform_id": "76561198843262824",
+          "display_name": "Archie",
+          "shared_replays": 7
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198381037239",
+      "display_names": [
+        "Oski"
+      ],
+      "replay_count": 7,
+      "team_names_seen": [
+        "GENTLE MATES"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Oskar G.",
+      "country": "Poland",
+      "team_history": [
+        {
+          "team": "Oxygen Esports",
+          "team_id": "oxygen",
+          "region": "EU",
+          "date_from": "2023-10-26",
+          "date_to": "2024-09-18"
+        },
+        {
+          "team": "Ninjas in Pyjamas",
+          "team_id": "nip",
+          "region": "EU",
+          "date_from": "2024-12-27",
+          "date_to": "2025-10-03"
+        },
+        {
+          "team": "Gentle Mates Alpine",
+          "team_id": "gentle-mates",
+          "region": "EU",
+          "date_from": "2025-10-11",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198838703744",
+          "display_name": "nass",
+          "shared_replays": 7
+        },
+        {
+          "platform_id": "76561198843262824",
+          "display_name": "Archie",
+          "shared_replays": 7
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198843262824",
+      "display_names": [
+        "Archie"
+      ],
+      "replay_count": 7,
+      "team_names_seen": [
+        "GENTLE MATES"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Archie P.",
+      "country": "England",
+      "team_history": [
+        {
+          "team": "Oxygen Esports",
+          "team_id": "oxygen",
+          "region": "EU",
+          "date_from": "2022-10-03",
+          "date_to": "2024-09-18"
+        },
+        {
+          "team": "Geekay Esports",
+          "team_id": "gk-esports",
+          "region": "EU",
+          "date_from": "2025-01-09",
+          "date_to": "2025-09-30"
+        },
+        {
+          "team": "Gentle Mates Alpine",
+          "team_id": "gentle-mates",
+          "region": "EU",
+          "date_from": "2025-10-11",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198838703744",
+          "display_name": "nass",
+          "shared_replays": 7
+        },
+        {
+          "platform_id": "76561198381037239",
+          "display_name": "Oski",
+          "shared_replays": 7
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198327846028",
+      "display_names": [
+        "Firstkiller"
+      ],
+      "replay_count": 3,
+      "team_names_seen": [
+        "REBELLION"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Jason C.",
+      "country": "USA",
+      "team_history": [
+        {
+          "team": "Gen.G Mobil1 Racing",
+          "team_id": "ggm1",
+          "region": "NA",
+          "date_from": "2023-10-10",
+          "date_to": "2024-10-31"
+        },
+        {
+          "team": "The Ultimates",
+          "team_id": "ultimates",
+          "region": "NA",
+          "date_from": "2025-01-09",
+          "date_to": "2025-09-27"
+        },
+        {
+          "team": "Shopify Rebellion",
+          "team_id": "shopify-rebellion",
+          "region": "NA",
+          "date_from": "2025-09-27",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198398125000",
+          "display_name": "Lj",
+          "shared_replays": 3
+        },
+        {
+          "platform_id": "76561198224723032",
+          "display_name": "kofyr",
+          "shared_replays": 3
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198398125000",
+      "display_names": [
+        "Lj"
+      ],
+      "replay_count": 3,
+      "team_names_seen": [
+        "REBELLION"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Logan W.",
+      "country": "USA",
+      "team_history": [
+        {
+          "team": "Spacestation Gaming",
+          "team_id": "ssg",
+          "region": "NA",
+          "date_from": "2022-09-21",
+          "date_to": "2024-10-18"
+        },
+        {
+          "team": "The Ultimates",
+          "team_id": "ultimates",
+          "region": "NA",
+          "date_from": "2025-01-09",
+          "date_to": "2025-09-27"
+        },
+        {
+          "team": "Shopify Rebellion",
+          "team_id": "shopify-rebellion",
+          "region": "NA",
+          "date_from": "2025-09-27",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198327846028",
+          "display_name": "Firstkiller",
+          "shared_replays": 3
+        },
+        {
+          "platform_id": "76561198224723032",
+          "display_name": "kofyr",
+          "shared_replays": 3
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198224723032",
+      "display_names": [
+        "kofyr"
+      ],
+      "replay_count": 3,
+      "team_names_seen": [
+        "REBELLION"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Angel L.",
+      "country": "USA",
+      "team_history": [
+        {
+          "team": "9Lives",
+          "team_id": "9-lives",
+          "region": "NA",
+          "date_from": "2024-11-22",
+          "date_to": "2025-03-22"
+        },
+        {
+          "team": "Spacestation Gaming",
+          "team_id": "ssg",
+          "region": "NA",
+          "date_from": "2025-03-22",
+          "date_to": "2025-09-26"
+        },
+        {
+          "team": "Shopify Rebellion",
+          "team_id": "shopify-rebellion",
+          "region": "NA",
+          "date_from": "2025-09-27",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198327846028",
+          "display_name": "Firstkiller",
+          "shared_replays": 3
+        },
+        {
+          "platform_id": "76561198398125000",
+          "display_name": "Lj",
+          "shared_replays": 3
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198144145654",
+      "display_names": [
+        "zen"
+      ],
+      "replay_count": 4,
+      "team_names_seen": [
+        "TEAM VITALITY"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Alexis B.",
+      "country": "France",
+      "team_history": [
+        {
+          "team": "Team Vitality",
+          "team_id": "team-vitality",
+          "region": "EU",
+          "date_from": "2022-10-02",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561199047701758",
+          "display_name": "stizzy",
+          "shared_replays": 4
+        },
+        {
+          "platform_id": "76561198258466111",
+          "display_name": "ExoTiiK",
+          "shared_replays": 4
+        }
+      ]
+    },
+    {
+      "platform_id": "76561199047701758",
+      "display_names": [
+        "stizzy"
+      ],
+      "replay_count": 4,
+      "team_names_seen": [
+        "TEAM VITALITY"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Gaspar R.A.",
+      "country": "Spain",
+      "team_history": [
+        {
+          "team": "Stormtroopers",
+          "team_id": "stormtroopers",
+          "region": "EU",
+          "date_from": "2024-12-04",
+          "date_to": "2025-01-10"
+        },
+        {
+          "team": "Dignitas",
+          "team_id": "dignitas",
+          "region": "EU",
+          "date_from": "2025-01-10",
+          "date_to": "2025-10-09"
+        },
+        {
+          "team": "Team Vitality",
+          "team_id": "team-vitality",
+          "region": "EU",
+          "date_from": "2025-10-14",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198144145654",
+          "display_name": "zen",
+          "shared_replays": 4
+        },
+        {
+          "platform_id": "76561198258466111",
+          "display_name": "ExoTiiK",
+          "shared_replays": 4
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198258466111",
+      "display_names": [
+        "ExoTiiK"
+      ],
+      "replay_count": 4,
+      "team_names_seen": [
+        "TEAM VITALITY"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Brice B.",
+      "country": "France",
+      "team_history": [
+        {
+          "team": "Karmine Corp",
+          "team_id": "karmine-corp",
+          "region": "EU",
+          "date_from": "2022-10-02",
+          "date_to": "2023-09-16"
+        },
+        {
+          "team": "Team BDS",
+          "team_id": "bds",
+          "region": "EU",
+          "date_from": "2023-10-27",
+          "date_to": "2024-10-11"
+        },
+        {
+          "team": "Team Vitality",
+          "team_id": "team-vitality",
+          "region": "EU",
+          "date_from": "2024-10-14",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561199031413358",
+          "display_name": "dralii",
+          "shared_replays": 4
+        },
+        {
+          "platform_id": "76561198980777579",
+          "display_name": "Kiileerrz",
+          "shared_replays": 4
+        },
+        {
+          "platform_id": "76561199017029799",
+          "display_name": "Rw9",
+          "shared_replays": 4
+        },
+        {
+          "platform_id": "76561198144145654",
+          "display_name": "zen",
+          "shared_replays": 4
+        },
+        {
+          "platform_id": "76561199047701758",
+          "display_name": "stizzy",
+          "shared_replays": 4
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198807532049",
+      "display_names": [
+        "Joyo"
+      ],
+      "replay_count": 4,
+      "team_names_seen": [
+        "GK ESPORTS"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Joseph Y.",
+      "country": "England",
+      "team_history": [
+        {
+          "team": "Moist Esports",
+          "team_id": "moist",
+          "region": "EU",
+          "date_from": "2022-05-05",
+          "date_to": "2024-04-08"
+        },
+        {
+          "team": "Oxygen Esports",
+          "team_id": "oxygen",
+          "region": "EU",
+          "date_from": "2024-04-12",
+          "date_to": "2024-09-18"
+        },
+        {
+          "team": "Geekay Esports",
+          "team_id": "gk-esports",
+          "region": "EU",
+          "date_from": "2025-01-09",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561199023677910",
+          "display_name": "ApparentlyJack",
+          "shared_replays": 4
+        },
+        {
+          "platform_id": "76561199013057612",
+          "display_name": "Seikoo",
+          "shared_replays": 4
+        }
+      ]
+    },
+    {
+      "platform_id": "76561199023677910",
+      "display_names": [
+        "ApparentlyJack"
+      ],
+      "replay_count": 4,
+      "team_names_seen": [
+        "GK ESPORTS"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Jack B.",
+      "country": "England",
+      "team_history": [
+        {
+          "team": "Gen.G Mobil1 Racing",
+          "team_id": "ggm1",
+          "region": "NA",
+          "date_from": "2022-09-28",
+          "date_to": "2024-10-31"
+        },
+        {
+          "team": "Stormtroopers",
+          "team_id": "stormtroopers",
+          "region": "EU",
+          "date_from": "2024-12-04",
+          "date_to": "2025-01-10"
+        },
+        {
+          "team": "Dignitas",
+          "team_id": "dignitas",
+          "region": "EU",
+          "date_from": "2025-01-10",
+          "date_to": "2025-10-09"
+        },
+        {
+          "team": "Geekay Esports",
+          "team_id": "gk-esports",
+          "region": "EU",
+          "date_from": "2025-10-09",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198807532049",
+          "display_name": "Joyo",
+          "shared_replays": 4
+        },
+        {
+          "platform_id": "76561199013057612",
+          "display_name": "Seikoo",
+          "shared_replays": 4
+        }
+      ]
+    },
+    {
+      "platform_id": "76561199013057612",
+      "display_names": [
+        "Seikoo"
+      ],
+      "replay_count": 4,
+      "team_names_seen": [
+        "GK ESPORTS"
+      ],
+      "source_groups": [
+        "flcn-poqvd5pvkp"
+      ],
+      "real_name": "Enzo G.",
+      "country": "France",
+      "team_history": [
+        {
+          "team": "Team BDS",
+          "team_id": "bds",
+          "region": "EU",
+          "date_from": "2022-04-26",
+          "date_to": "2023-12-14"
+        },
+        {
+          "team": "Gentle Mates Alpine",
+          "team_id": "gentle-mates",
+          "region": "EU",
+          "date_from": "2024-01-04",
+          "date_to": "2025-10-08"
+        },
+        {
+          "team": "Geekay Esports",
+          "team_id": "gk-esports",
+          "region": "EU",
+          "date_from": "2025-10-09",
+          "date_to": "2026-03-07"
+        },
+        {
+          "team": "Man City Esports",
+          "team_id": "man-city-esports",
+          "region": "EU",
+          "date_from": "2026-03-08",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198807532049",
+          "display_name": "Joyo",
+          "shared_replays": 4
+        },
+        {
+          "platform_id": "76561199023677910",
+          "display_name": "ApparentlyJack",
+          "shared_replays": 4
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198974429177",
+      "display_names": [
+        "Joreuz"
+      ],
+      "replay_count": 11,
+      "team_names_seen": [
+        "NIP"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Joris R.",
+      "country": "Netherlands",
+      "team_history": [
+        {
+          "team": "Stormtroopers",
+          "team_id": "stormtroopers",
+          "region": "EU",
+          "date_from": "2024-12-04",
+          "date_to": "2025-01-10"
+        },
+        {
+          "team": "Dignitas",
+          "team_id": "dignitas",
+          "region": "EU",
+          "date_from": "2025-01-10",
+          "date_to": "2025-10-09"
+        },
+        {
+          "team": "Ninjas in Pyjamas",
+          "team_id": "nip",
+          "region": "EU",
+          "date_from": "2025-11-07",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198845948731",
+          "display_name": "cRR",
+          "shared_replays": 11
+        },
+        {
+          "platform_id": "76561198397306747",
+          "display_name": "oaly",
+          "shared_replays": 11
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198845948731",
+      "display_names": [
+        "cRR",
+        "crr^^"
+      ],
+      "replay_count": 11,
+      "team_names_seen": [
+        "NIP"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Cristian F.",
+      "country": "Spain",
+      "team_history": [
+        {
+          "team": "Guild Esports",
+          "team_id": "guild-esports",
+          "region": "EU",
+          "date_from": "2022-01-13",
+          "date_to": "2022-09-21"
+        },
+        {
+          "team": "Complexity Gaming",
+          "team_id": "complexity",
+          "region": "EU",
+          "date_from": "2022-09-21",
+          "date_to": "2025-09-03"
+        },
+        {
+          "team": "Ninjas in Pyjamas",
+          "team_id": "nip",
+          "region": "EU",
+          "date_from": "2025-11-07",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198974429177",
+          "display_name": "Joreuz",
+          "shared_replays": 11
+        },
+        {
+          "platform_id": "76561198397306747",
+          "display_name": "oaly",
+          "shared_replays": 11
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198397306747",
+      "display_names": [
+        "oaly"
+      ],
+      "replay_count": 11,
+      "team_names_seen": [
+        "NIP"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Ole van D.",
+      "country": "Netherlands",
+      "team_history": [
+        {
+          "team": "Jobless",
+          "team_id": "jobless",
+          "region": "EU",
+          "date_from": "2024-04-15",
+          "date_to": "2025-01-09"
+        },
+        {
+          "team": "Geekay Esports",
+          "team_id": "gk-esports",
+          "region": "EU",
+          "date_from": "2025-01-09",
+          "date_to": "2025-09-30"
+        },
+        {
+          "team": "Ninjas in Pyjamas",
+          "team_id": "nip",
+          "region": "EU",
+          "date_from": "2025-11-07",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198974429177",
+          "display_name": "Joreuz",
+          "shared_replays": 11
+        },
+        {
+          "platform_id": "76561198845948731",
+          "display_name": "cRR",
+          "shared_replays": 11
+        },
+        {
+          "platform_id": "76561198398125000",
+          "display_name": "Lj",
+          "shared_replays": 6
+        },
+        {
+          "platform_id": "76561198327846028",
+          "display_name": "Firstkiller",
+          "shared_replays": 6
+        },
+        {
+          "platform_id": "76561198224723032",
+          "display_name": "kofyr",
+          "shared_replays": 6
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198994793330",
+      "display_names": [
+        "trk511"
+      ],
+      "replay_count": 12,
+      "team_names_seen": [
+        "TWISTED MINDS"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Mohammed K.A.",
+      "country": "Saudi Arabia",
+      "team_history": [
+        {
+          "team": "Sandrock Gaming",
+          "team_id": "sandrock-gaming",
+          "region": "MENA",
+          "date_from": "2021-08-06",
+          "date_to": "2022-03-25"
+        },
+        {
+          "team": "Team Falcons",
+          "team_id": "team-falcons",
+          "region": "MENA",
+          "date_from": "2022-04-01",
+          "date_to": "2025-09-19"
+        },
+        {
+          "team": "Twisted Minds",
+          "team_id": "twisted-minds",
+          "region": "MENA",
+          "date_from": "2025-10-03",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198823985212",
+          "display_name": "M0nkey M00n",
+          "shared_replays": 12
+        },
+        {
+          "platform_id": "76561199019981824",
+          "display_name": "Nwpo",
+          "shared_replays": 12
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198823985212",
+      "display_names": [
+        "M0nkey M00n"
+      ],
+      "replay_count": 12,
+      "team_names_seen": [
+        "TWISTED MINDS"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Evan R",
+      "country": "France",
+      "team_history": [
+        {
+          "team": "Team BDS",
+          "team_id": "bds",
+          "region": "EU",
+          "date_from": "2020-02-03",
+          "date_to": "2024-10-12"
+        },
+        {
+          "team": "Team Vitality",
+          "team_id": "team-vitality",
+          "region": "EU",
+          "date_from": "2024-10-14",
+          "date_to": "2025-09-30"
+        },
+        {
+          "team": "Twisted Minds",
+          "team_id": "twisted-minds",
+          "region": "MENA",
+          "date_from": "2025-09-30",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198994793330",
+          "display_name": "trk511",
+          "shared_replays": 12
+        },
+        {
+          "platform_id": "76561199019981824",
+          "display_name": "Nwpo",
+          "shared_replays": 12
+        }
+      ]
+    },
+    {
+      "platform_id": "76561199019981824",
+      "display_names": [
+        "Nwpo"
+      ],
+      "replay_count": 12,
+      "team_names_seen": [
+        "TWISTED MINDS"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Hisham A.",
+      "country": "Saudi Arabia",
+      "team_history": [
+        {
+          "team": "Rule One",
+          "team_id": "rule-one",
+          "region": "MENA",
+          "date_from": "2024-01-15",
+          "date_to": "2024-05-03"
+        },
+        {
+          "team": "Anything",
+          "team_id": "anything",
+          "region": "MENA",
+          "date_from": "2024-05-03",
+          "date_to": "2024-07-15"
+        },
+        {
+          "team": "Twisted Minds",
+          "team_id": "twisted-minds",
+          "region": "MENA",
+          "date_from": "2024-07-15",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198994793330",
+          "display_name": "trk511",
+          "shared_replays": 12
+        },
+        {
+          "platform_id": "76561198823985212",
+          "display_name": "M0nkey M00n",
+          "shared_replays": 12
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198799226283",
+      "display_names": [
+        "Chronic"
+      ],
+      "replay_count": 12,
+      "team_names_seen": [
+        "SPACESTATION"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Nick I.",
+      "country": "USA",
+      "team_history": [
+        {
+          "team": "Gen.G Mobil1 Racing",
+          "team_id": "ggm1",
+          "region": "NA",
+          "date_from": "2022-09-28",
+          "date_to": "2024-10-31"
+        },
+        {
+          "team": "The Ultimates",
+          "team_id": "ultimates",
+          "region": "NA",
+          "date_from": "2025-01-09",
+          "date_to": "2025-09-27"
+        },
+        {
+          "team": "Spacestation Gaming",
+          "team_id": "ssg",
+          "region": "NA",
+          "date_from": "2025-11-10",
+          "date_to": "2026-02-27"
+        },
+        {
+          "team": "FUT Esports",
+          "team_id": "fut-esports",
+          "region": "NA",
+          "date_from": "2026-03-06",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561199045907333",
+          "display_name": "reveal",
+          "shared_replays": 12
+        },
+        {
+          "platform_id": "76561198880724484",
+          "display_name": "diaz",
+          "shared_replays": 12
+        }
+      ]
+    },
+    {
+      "platform_id": "76561199045907333",
+      "display_names": [
+        "reveal"
+      ],
+      "replay_count": 12,
+      "team_names_seen": [
+        "SPACESTATION"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Jack L.",
+      "country": "USA",
+      "team_history": [
+        {
+          "team": "The Snowmen",
+          "team_id": "snowmen",
+          "region": "NA",
+          "date_from": "2024-01-21",
+          "date_to": "2024-11-07"
+        },
+        {
+          "team": "Spacestation Gaming",
+          "team_id": "ssg",
+          "region": "NA",
+          "date_from": "2024-11-07",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198799226283",
+          "display_name": "Chronic",
+          "shared_replays": 12
+        },
+        {
+          "platform_id": "76561198880724484",
+          "display_name": "diaz",
+          "shared_replays": 12
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198880724484",
+      "display_names": [
+        "diaz"
+      ],
+      "replay_count": 12,
+      "team_names_seen": [
+        "SPACESTATION"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "João H.",
+      "country": "Brazil",
+      "team_history": [
+        {
+          "team": "w7m esports",
+          "team_id": "w7m",
+          "region": "NA",
+          "date_from": "2023-11-23",
+          "date_to": "2024-04-16"
+        },
+        {
+          "team": "Complexity Gaming",
+          "team_id": "complexity",
+          "region": "NA",
+          "date_from": "2024-04-19",
+          "date_to": "2025-09-03"
+        },
+        {
+          "team": "Spacestation Gaming",
+          "team_id": "ssg",
+          "region": "NA",
+          "date_from": "2025-11-10",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198799226283",
+          "display_name": "Chronic",
+          "shared_replays": 12
+        },
+        {
+          "platform_id": "76561199045907333",
+          "display_name": "reveal",
+          "shared_replays": 12
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198803799478",
+      "display_names": [
+        "Lostt."
+      ],
+      "replay_count": 14,
+      "team_names_seen": [
+        "FURIA"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Gabriel S. B.",
+      "country": "Brazil",
+      "team_history": [
+        {
+          "team": "The Club",
+          "team_id": "the-club",
+          "region": "NA",
+          "date_from": "2022-03-30",
+          "date_to": "2023-01-18"
+        },
+        {
+          "team": "FURIA",
+          "team_id": "furia",
+          "region": "SA",
+          "date_from": "2023-01-18",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198984563626",
+          "display_name": "swiftt./",
+          "shared_replays": 14
+        },
+        {
+          "platform_id": "76561198856200686",
+          "display_name": "yANXNZ^^",
+          "shared_replays": 14
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198984563626",
+      "display_names": [
+        "swiftt"
+      ],
+      "replay_count": 14,
+      "team_names_seen": [
+        "FURIA"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Pedro H. L. G.",
+      "country": "Brazil",
+      "team_history": [
+        {
+          "team": "Ninjas in Pyjamas",
+          "team_id": "nip",
+          "region": "EU",
+          "date_from": "2023-10-13",
+          "date_to": "2025-01-03"
+        },
+        {
+          "team": "Team Secret",
+          "team_id": "team-secret",
+          "region": "SA",
+          "date_from": "2025-01-03",
+          "date_to": "2025-11-01"
+        },
+        {
+          "team": "FURIA",
+          "team_id": "furia",
+          "region": "SA",
+          "date_from": "2025-11-01",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198803799478",
+          "display_name": "Lostt.",
+          "shared_replays": 14
+        },
+        {
+          "platform_id": "76561198856200686",
+          "display_name": "yANXNZ^^",
+          "shared_replays": 14
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198856200686",
+      "display_names": [
+        "yANXNZ^^"
+      ],
+      "replay_count": 14,
+      "team_names_seen": [
+        "FURIA"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Yan B. X. N.",
+      "country": "Brazil",
+      "team_history": [
+        {
+          "team": "FURIA",
+          "team_id": "furia",
+          "region": "SA",
+          "date_from": "2021-08-17",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198803799478",
+          "display_name": "Lostt.",
+          "shared_replays": 14
+        },
+        {
+          "platform_id": "76561198984563626",
+          "display_name": "swiftt./",
+          "shared_replays": 14
+        }
+      ]
+    },
+    {
+      "platform_id": "76561199056379402",
+      "display_names": [
+        "Wahvey"
+      ],
+      "replay_count": 14,
+      "team_names_seen": [
+        "VIRTUS.PRO"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Dylan T.",
+      "country": "USA",
+      "team_history": [
+        {
+          "team": "Shopify Rebellion",
+          "team_id": "shopify-rebellion",
+          "region": "NA",
+          "date_from": "2025-07-02",
+          "date_to": "2025-09-24"
+        },
+        {
+          "team": "[Redacted]",
+          "team_id": "redacted",
+          "region": "NA",
+          "date_from": "2025-10-20",
+          "date_to": "2026-02-18"
+        },
+        {
+          "team": "Virtus.pro",
+          "team_id": "virtus-pro",
+          "region": "NA",
+          "date_from": "2026-02-18",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198802792967",
+          "display_name": "2Piece",
+          "shared_replays": 14
+        },
+        {
+          "platform_id": "76561198381787004",
+          "display_name": "tawk",
+          "shared_replays": 14
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198802792967",
+      "display_names": [
+        "2Piece"
+      ],
+      "replay_count": 14,
+      "team_names_seen": [
+        "VIRTUS.PRO"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Jayden H.",
+      "country": "USA",
+      "team_history": [
+        {
+          "team": "Shopify Rebellion",
+          "team_id": "shopify-rebellion",
+          "region": "NA",
+          "date_from": "2022-09-30",
+          "date_to": "2025-09-24"
+        },
+        {
+          "team": "[Redacted]",
+          "team_id": "redacted",
+          "region": "NA",
+          "date_from": "2025-10-20",
+          "date_to": "2026-02-18"
+        },
+        {
+          "team": "Virtus.pro",
+          "team_id": "virtus-pro",
+          "region": "NA",
+          "date_from": "2026-02-18",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561199056379402",
+          "display_name": "Wahvey",
+          "shared_replays": 14
+        },
+        {
+          "platform_id": "76561198381787004",
+          "display_name": "tawk",
+          "shared_replays": 14
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198381787004",
+      "display_names": [
+        "tawk"
+      ],
+      "replay_count": 14,
+      "team_names_seen": [
+        "VIRTUS.PRO"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Cohen H.",
+      "country": "Canada",
+      "team_history": [
+        {
+          "team": "Carl",
+          "team_id": "carl",
+          "region": "NA",
+          "date_from": "2025-07-07",
+          "date_to": "2025-09-15"
+        },
+        {
+          "team": "[Redacted]",
+          "team_id": "redacted",
+          "region": "NA",
+          "date_from": "2025-10-20",
+          "date_to": "2026-02-18"
+        },
+        {
+          "team": "Virtus.pro",
+          "team_id": "virtus-pro",
+          "region": "NA",
+          "date_from": "2026-02-18",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561199056379402",
+          "display_name": "Wahvey",
+          "shared_replays": 14
+        },
+        {
+          "platform_id": "76561198802792967",
+          "display_name": "2Piece",
+          "shared_replays": 14
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198996913568",
+      "display_names": [
+        "Superlachie"
+      ],
+      "replay_count": 5,
+      "team_names_seen": [
+        "PWR"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Lachlan G.",
+      "country": "Australia",
+      "team_history": [
+        {
+          "team": "TSM",
+          "team_id": "tsm",
+          "region": "OCE",
+          "date_from": "2025-01-17",
+          "date_to": "2026-10-16"
+        },
+        {
+          "team": "PWR",
+          "team_id": "pwr",
+          "region": "OCE",
+          "date_from": "2025-11-20",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198845948731",
+          "display_name": "cRR",
+          "shared_replays": 5
+        },
+        {
+          "platform_id": "76561198959074903",
+          "display_name": "Fiberr~",
+          "shared_replays": 5
+        },
+        {
+          "platform_id": "76561199019121536",
+          "display_name": "gus",
+          "shared_replays": 5
+        }
+      ]
+    },
+    {
+      "platform_id": "76561198959074903",
+      "display_names": [
+        "Fiberr~"
+      ],
+      "replay_count": 5,
+      "team_names_seen": [
+        "PWR"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Ezequiel A.L.",
+      "country": "Australia",
+      "team_history": [
+        {
+          "team": "Helfie Chiefs",
+          "team_id": "helfie-chiefs",
+          "region": "OCE",
+          "date_from": "2025-01-09",
+          "date_to": "2025-07-03"
+        },
+        {
+          "team": "PWR",
+          "team_id": "pwr",
+          "region": "OCE",
+          "date_from": "2025-11-20",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198996913568",
+          "display_name": "Superlachie",
+          "shared_replays": 5
+        },
+        {
+          "platform_id": "76561199019121536",
+          "display_name": "gus",
+          "shared_replays": 5
+        }
+      ]
+    },
+    {
+      "platform_id": "76561199019121536",
+      "display_names": [
+        "gus"
+      ],
+      "replay_count": 5,
+      "team_names_seen": [
+        "PWR"
+      ],
+      "source_groups": [
+        "boston-major-v1upbparf4"
+      ],
+      "real_name": "Angus H.",
+      "country": "Australia",
+      "team_history": [
+        {
+          "team": "PWR",
+          "team_id": "pwr",
+          "region": "OCE",
+          "date_from": "2025-03-31",
+          "date_to": "2025-07-04"
+        },
+        {
+          "team": "PWR",
+          "team_id": "pwr",
+          "region": "OCE",
+          "date_from": "2025-11-20",
+          "date_to": null
+        }
+      ],
+      "frequent_teammates": [
+        {
+          "platform_id": "76561198996913568",
+          "display_name": "Superlachie",
+          "shared_replays": 5
+        },
+        {
+          "platform_id": "76561198959074903",
+          "display_name": "Fiberr~",
+          "shared_replays": 5
+        }
+      ]
+    }
+  ]
+}

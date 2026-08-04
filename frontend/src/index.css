@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    background-color: #080812;
+    color: #e2e8f0;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400% 0; }
+  100% { background-position:  400% 0; }
+}
+
+@layer utilities {
+  .skeleton-shimmer {
+    background: linear-gradient(90deg, #0e0e1a 25%, #1e1e3a 50%, #0e0e1a 75%);
+    background-size: 400% 100%;
+    animation: shimmer 1.8s ease-in-out infinite;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #1e1e3a #080812;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: #080812;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #1e1e3a;
+    border-radius: 2px;
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
+  }
+  .glow-cyan-sm {
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
+  }
+  .text-glow-cyan {
+    text-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
+  }
+}
