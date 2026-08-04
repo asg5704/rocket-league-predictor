@@ -1,5 +1,3 @@
-import { CloudLightning } from "lucide-react";
-
 interface Props {
   archetype: string;
   size?: "sm" | "md";
@@ -12,8 +10,8 @@ const ARCHETYPE_STYLES: Record<string, string> = {
   unknown: "bg-slate-500/20 text-slate-400 border-slate-500/40",
 };
 
-const ARCHETYPE_ICONS: Record<string, React.RefAttributes<SVGSVGElement>> = {
-  striker: CloudLightning,
+const ARCHETYPE_ICONS: Record<string, string> = {
+  striker: "⚡",
   anchor: "🛡",
   flex: "🔄",
   unknown: "?",

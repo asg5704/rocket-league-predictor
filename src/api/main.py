@@ -3,9 +3,9 @@ main.py — RLCS Team Optimizer FastAPI application.
 
 Endpoints
 ---------
-    GET  /players       — All known players with archetype, team, and Elo
-    POST /optimize      — Given a player pool, return the top-k lineups
-    GET  /elo-ratings   — Team Elo leaderboard
+    GET  /api/players       — All known players with archetype, team, and Elo
+    POST /api/optimize      — Given a player pool, return the top-k lineups
+    GET  /api/elo-ratings   — Team Elo leaderboard
 
 All models are loaded once at startup via the lifespan context manager and
 stored on app.state. No model I/O happens during request handling.
@@ -25,6 +25,7 @@ from pathlib import Path
 import pandas as pd  # used in _load_player_teams and _build_player_index
 from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from src.api.schemas import (
     EloRatingOut,
@@ -174,7 +175,7 @@ async def add_security_headers(request: Request, call_next) -> Response:
 # Endpoints
 # ---------------------------------------------------------------------------
 
-@app.get("/players", response_model=PlayersResponse)
+@app.get("/api/players", response_model=PlayersResponse)
 def get_players() -> PlayersResponse:
     """Return all known players sorted by Elo descending."""
     players = sorted(
@@ -185,7 +186,7 @@ def get_players() -> PlayersResponse:
     return PlayersResponse(players=players, total=len(players))
 
 
-@app.post("/optimize", response_model=OptimizeResponse)
+@app.post("/api/optimize", response_model=OptimizeResponse)
 def optimize(req: OptimizeRequest) -> OptimizeResponse:
     """
     Return the top-k lineups from the given player pool.
@@ -241,7 +242,7 @@ def optimize(req: OptimizeRequest) -> OptimizeResponse:
     return OptimizeResponse(lineups=lineups, pool_size=len(req.player_ids))
 
 
-@app.get("/elo-ratings", response_model=EloRatingsResponse)
+@app.get("/api/elo-ratings", response_model=EloRatingsResponse)
 def get_elo_ratings() -> EloRatingsResponse:
     """Return all team Elo ratings sorted descending."""
     ratings_df = app.state.elo_model.ratings_df()
@@ -250,3 +251,14 @@ def get_elo_ratings() -> EloRatingsResponse:
         for i, row in ratings_df.iterrows()
     ]
     return EloRatingsResponse(ratings=ratings, total=len(ratings))
+
+
+# ---------------------------------------------------------------------------
+# Static frontend — mounted last so /api/* routes above take precedence.
+# Only present in the Docker image (built by the frontend stage); absent
+# during local dev, where Vite's own dev server serves the SPA instead.
+# ---------------------------------------------------------------------------
+
+_FRONTEND_DIST = _ROOT / "frontend_dist"
+if _FRONTEND_DIST.is_dir():
+    app.mount("/", StaticFiles(directory=_FRONTEND_DIST, html=True), name="frontend")
