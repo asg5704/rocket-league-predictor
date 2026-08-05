@@ -1,0 +1,20 @@
+{
+  "kmeans": {
+    "silhouette": 0.09765920012375572,
+    "distribution": {
+      "anchor": 38,
+      "flex": 35,
+      "striker": 27,
+      "unknown": 19
+    }
+  },
+  "gmm": {
+    "silhouette": 0.09412237789462742,
+    "distribution": {
+      "anchor": 49,
+      "striker": 35,
+      "unknown": 19,
+      "flex": 16
+    }
+  }
+}

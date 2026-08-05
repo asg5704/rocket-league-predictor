@@ -20,8 +20,6 @@ env/
 
 # Data — raw and processed data files are not versioned
 data/raw/
-data/processed/
-data/models/
 
 # Keep data directory structure
 !data/raw/.gitkeep
