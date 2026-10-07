@@ -228,3 +228,15 @@ but they will catch a broken pipeline. Also worth eyeballing:
 8. NRG Esports
 9. Pioneeers
 10. Chromax
+
+## Dependency audit
+
+```bash
+pip install pip-audit
+pip-audit -r requirements.txt --no-deps --disable-pip
+pip-audit -r requirements-prod.txt --no-deps --disable-pip
+```
+
+Also runs in CI (`.github/workflows/pip-audit.yml`) on requirements changes and
+weekly. When it flags a package, bump the pin in `requirements.txt` (and
+`requirements-prod.txt` if it's a runtime dep), then re-run the tests.

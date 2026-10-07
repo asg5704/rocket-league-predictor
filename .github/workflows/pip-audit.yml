@@ -1,0 +1,25 @@
+name: pip-audit
+
+on:
+  push:
+    branches: [main]
+    paths: ["requirements*.txt", ".github/workflows/pip-audit.yml"]
+  pull_request:
+    paths: ["requirements*.txt", ".github/workflows/pip-audit.yml"]
+  schedule:
+    - cron: "0 9 * * 1" # Mondays, catches newly published advisories
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - run: pip install pip-audit
+      - name: Audit production dependencies
+        run: pip-audit -r requirements-prod.txt --no-deps --disable-pip
+      - name: Audit full dev/pipeline dependencies
+        run: pip-audit -r requirements.txt --no-deps --disable-pip
