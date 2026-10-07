@@ -20,6 +20,7 @@ Returns
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import TYPE_CHECKING, Optional
 
 import pandas as pd
@@ -264,3 +265,24 @@ def build_features(
         features = features.merge(elo_df, on="match_id", how="left")
 
     return features.sort_values("date").reset_index(drop=True)
+
+
+if __name__ == "__main__":
+    from src.models.elo import EloModel
+
+    matches_path = Path("data/processed/matches.parquet")
+    player_stats_path = Path("data/processed/player_stats.parquet")
+    elo_path = Path("data/models/elo.pkl")
+    output_path = Path("data/processed/features.parquet")
+
+    matches = pd.read_parquet(matches_path)
+    player_stats = pd.read_parquet(player_stats_path)
+    elo_model = EloModel.load(elo_path)
+    print(f"Loaded {len(matches)} matches, {len(player_stats)} player-stat rows\n")
+
+    features = build_features(matches, player_stats, rolling_window=5, elo_model=elo_model)
+    print(f"Built {len(features)} feature rows, {features.shape[1]} columns")
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    features.to_parquet(output_path, index=False)
+    print(f"Features → {output_path}")

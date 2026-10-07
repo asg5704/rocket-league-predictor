@@ -30,14 +30,36 @@ class BallchasingAPI:
         self.session = requests.Session()
         self.session.headers.update({"Authorization": api_key})
 
+    def _get(self, url: str, params: Optional[Dict] = None, max_retries: int = 5) -> requests.Response:
+        """
+        GET with automatic retry-with-backoff on 429 (rate limited).
+
+        Respects the ``Retry-After`` header when Ballchasing sends one;
+        otherwise backs off exponentially (2s, 4s, 8s, ...).
+        """
+        for attempt in range(max_retries + 1):
+            response = self.session.get(url, params=params)
+            if response.status_code != 429:
+                response.raise_for_status()
+                return response
+
+            if attempt == max_retries:
+                response.raise_for_status()
+
+            retry_after = response.headers.get("Retry-After")
+            wait = float(retry_after) if retry_after else 2 ** (attempt + 1)
+            print(f"  [rate limited] 429 — retrying in {wait:.0f}s (attempt {attempt + 1}/{max_retries})")
+            time.sleep(wait)
+
+        raise RuntimeError("unreachable")  # loop always returns or raises
+
     # -------------------------------------------------------------------------
     # Auth
     # -------------------------------------------------------------------------
 
     def ping(self) -> Dict:
         """Verify the API key and return the authenticated uploader's info."""
-        response = self.session.get(f"{self.BASE_URL}/")
-        response.raise_for_status()
+        response = self._get(f"{self.BASE_URL}/")
         return response.json()
 
     # -------------------------------------------------------------------------
@@ -46,8 +68,7 @@ class BallchasingAPI:
 
     def get_replay(self, replay_id: str) -> Dict:
         """Fetch full statistics for a single replay."""
-        response = self.session.get(f"{self.BASE_URL}/replays/{replay_id}")
-        response.raise_for_status()
+        response = self._get(f"{self.BASE_URL}/replays/{replay_id}")
         return response.json()
 
     def iter_replays(
@@ -83,8 +104,7 @@ class BallchasingAPI:
         yielded = 0
 
         while url and yielded < max_replays:
-            response = self.session.get(url, params=params)
-            response.raise_for_status()
+            response = self._get(url, params=params)
             data = response.json()
 
             for replay in data.get("list", []):
@@ -106,8 +126,7 @@ class BallchasingAPI:
 
     def get_group(self, group_id: str) -> Dict:
         """Fetch metadata for a specific replay group."""
-        response = self.session.get(f"{self.BASE_URL}/groups/{group_id}")
-        response.raise_for_status()
+        response = self._get(f"{self.BASE_URL}/groups/{group_id}")
         return response.json()
 
     def list_groups(
@@ -130,8 +149,7 @@ class BallchasingAPI:
         if creator:
             params["creator"] = creator
 
-        response = self.session.get(f"{self.BASE_URL}/groups", params=params)
-        response.raise_for_status()
+        response = self._get(f"{self.BASE_URL}/groups", params=params)
         return response.json().get("list", [])
 
     # -------------------------------------------------------------------------

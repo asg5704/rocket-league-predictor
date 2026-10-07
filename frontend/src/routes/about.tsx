@@ -7,8 +7,12 @@ import {
   Zap,
   TrendingUp,
   AlertTriangle,
+  ScatterChart,
+  History,
 } from "lucide-react";
 import { ArchetypeBadge } from "../components/ArchetypeBadge";
+import { ArchetypeClusterChart } from "../components/ArchetypeClusterChart";
+import changelog from "../data/model_changelog.json";
 
 export const Route = createFileRoute("/about")({
   component: About,
@@ -118,7 +122,7 @@ function About() {
             </div>
             <p className="mt-1">
               Archetypes are derived from K-Means clustering on 22
-              career-average stats across {117} RLCS pros.
+              career-average stats across {121} RLCS pros.
             </p>
           </Section>
 
@@ -188,7 +192,7 @@ function About() {
 
           <Section icon={<TrendingUp size={20} />} title="Elo Leaderboard">
             <p>
-              Shows team strength computed from all 303 RLCS match outcomes
+              Shows team strength computed from all 328 RLCS match outcomes
               (2025–2026 seasons). Elo updates chronologically each match shifts
               ratings by up to 32 points.
             </p>
@@ -198,10 +202,41 @@ function About() {
             </p>
           </Section>
 
+          <Section icon={<History size={20} />} title="Model changelog">
+            <p>
+              Each retrain with new Ballchasing data is logged here, newest
+              first.
+            </p>
+            <ul className="flex flex-col gap-3">
+              {changelog.map((e) => (
+                <li
+                  key={e.date}
+                  className="border border-border-dim rounded-lg px-3 py-2 text-xs leading-relaxed"
+                >
+                  <div className="flex items-baseline justify-between gap-2">
+                    <span className="text-slate-200 font-medium">{e.title}</span>
+                    <span className="text-slate-500">{e.date}</span>
+                  </div>
+                  <div className="text-slate-400">
+                    {e.matches} matches · {e.players} players · {e.teams} teams
+                  </div>
+                  <div className="text-slate-400">
+                    XGBoost accuracy {(e.xgboostAccuracy * 100).toFixed(1)}% ·
+                    ROC-AUC {e.xgboostRocAuc.toFixed(2)} · silhouette{" "}
+                    {e.silhouette.toFixed(2)}
+                  </div>
+                  <div className="text-slate-400">
+                    Top 3: {e.top3.join(", ")}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </Section>
+
           {/* Data note */}
           <div className="border-t border-border-dim pt-4 text-xs text-slate-600 leading-relaxed">
-            Data sourced from Ballchasing.com · 303 RLCS replays · 117 players ·
-            42 teams. Synergy scores are in-sample — the optimizer favours
+            Data sourced from Ballchasing.com · 328 RLCS replays · 121 players ·
+            45 teams. Synergy scores are in-sample — the optimizer favours
             historically strong trios, not forward predictions.
           </div>
         </div>
@@ -267,6 +302,26 @@ function About() {
                 <li>Deployment + DevOps</li>
               </ul>
             </div>
+          </Section>
+          <Section
+            icon={<ScatterChart size={20} />}
+            title="Methodology: K-Means player archetypes"
+          >
+            <p>
+              Each RLCS pro's 22 career-average stats (goals, saves, boost
+              usage, positioning, movement, etc.) are standardized and
+              clustered into 3 archetypes with K-Means. Players below 5
+              career games aren't clustered and show as "unknown". The plot
+              below projects that 22-dimensional feature space down to 2D
+              with PCA, purely for visualization — the model itself clusters
+              on the full feature set, not these two components.
+            </p>
+            <ArchetypeClusterChart />
+            <p className="text-xs text-slate-600 mt-1">
+              Silhouette score ≈ 0.12 — clusters are directional rather than
+              tightly separated, which tracks with how fluid pro RL roles
+              actually are.
+            </p>
           </Section>
           <Section icon={<MousePointerClick size={20} />} title="About me">
             <p>
