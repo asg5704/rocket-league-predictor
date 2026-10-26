@@ -39,6 +39,7 @@ import argparse
 import json
 import os
 import sys
+import time
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -138,6 +139,11 @@ def extract_players_from_groups(
             except Exception as e:
                 print(f"  [error] {replay_id}: {e}")
                 continue
+            finally:
+                # iter_replays() only delays between paginated list requests,
+                # not these per-replay detail fetches — without this the loop
+                # blows through the ~2 req/s rate limit in a few seconds.
+                time.sleep(delay)
 
             records = _parse_replay_players(replay)
             if not records:

@@ -1,8 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-bkg: #0e0e1b;
+  --color-surface: #151528;
+  --color-border-dim: #1e1e3a;
+  --color-border-bright: #2e2e5a;
+  --font-sans: Inter, "system-ui", sans-serif;
+  --font-mono: "Jetbrains Mono", monospace;
+}
 
 @layer base {
   * {
@@ -15,9 +22,8 @@
 
   body {
     margin: 0;
-    background-color: #080812;
-    color: #e2e8f0;
-    font-family: 'Inter', system-ui, sans-serif;
+    padding: 0;
+    font-family: "monospace", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -28,8 +34,12 @@
 }
 
 @keyframes shimmer {
-  0%   { background-position: -400% 0; }
-  100% { background-position:  400% 0; }
+  0% {
+    background-position: -400% 0;
+  }
+  100% {
+    background-position: 400% 0;
+  }
 }
 
 @layer utilities {
@@ -52,15 +62,5 @@
   .scrollbar-thin::-webkit-scrollbar-thumb {
     background: #1e1e3a;
     border-radius: 2px;
-  }
-
-  .glow-cyan {
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
-  }
-  .glow-cyan-sm {
-    box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
-  }
-  .text-glow-cyan {
-    text-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
   }
 }

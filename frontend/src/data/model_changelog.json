@@ -1,0 +1,24 @@
+[
+  {
+    "date": "2026-10-06",
+    "title": "RLCS World Championship 2026",
+    "matches": 328,
+    "players": 121,
+    "teams": 45,
+    "silhouette": 0.12,
+    "xgboostAccuracy": 0.557,
+    "xgboostRocAuc": 0.603,
+    "top3": ["Gentlemates", "Team Falcons", "Wildcard"]
+  },
+  {
+    "date": "2026-10-05",
+    "title": "Initial release",
+    "matches": 303,
+    "players": 117,
+    "teams": 42,
+    "silhouette": 0.1,
+    "xgboostAccuracy": 0.531,
+    "xgboostRocAuc": 0.561,
+    "top3": ["Gentlemates", "Team Vitality", "Wildcard"]
+  }
+]

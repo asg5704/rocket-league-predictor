@@ -1,0 +1,977 @@
+{
+  "points": [
+    {
+      "id": "296fb9be36c945aa87e8421c5e937cd1",
+      "name": "kv1.exe",
+      "archetype": "flex",
+      "x": -3.463,
+      "y": -4.901,
+      "n_games": 5
+    },
+    {
+      "id": "76561198050138810",
+      "name": "Wee_Casper",
+      "archetype": "flex",
+      "x": -1.33,
+      "y": -2.518,
+      "n_games": 5
+    },
+    {
+      "id": "76561198052159821",
+      "name": "Torsos",
+      "archetype": "striker",
+      "x": 3.192,
+      "y": -0.71,
+      "n_games": 9
+    },
+    {
+      "id": "76561198053744609",
+      "name": "BananaCat",
+      "archetype": "flex",
+      "x": -0.465,
+      "y": -0.944,
+      "n_games": 5
+    },
+    {
+      "id": "76561198126096484",
+      "name": "suco",
+      "archetype": "anchor",
+      "x": -1.944,
+      "y": 2.471,
+      "n_games": 7
+    },
+    {
+      "id": "76561198129528178",
+      "name": "ops",
+      "archetype": "striker",
+      "x": 0.889,
+      "y": 2.093,
+      "n_games": 10
+    },
+    {
+      "id": "76561198130156848",
+      "name": "Cata",
+      "archetype": "striker",
+      "x": 1.454,
+      "y": -1.103,
+      "n_games": 14
+    },
+    {
+      "id": "76561198136195715",
+      "name": "ballerrees",
+      "archetype": "anchor",
+      "x": -0.581,
+      "y": 1.436,
+      "n_games": 8
+    },
+    {
+      "id": "76561198143210154",
+      "name": "LCT",
+      "archetype": "anchor",
+      "x": -1.701,
+      "y": 0.208,
+      "n_games": 8
+    },
+    {
+      "id": "76561198144145654",
+      "name": "zen",
+      "archetype": "striker",
+      "x": 1.062,
+      "y": 2.496,
+      "n_games": 54
+    },
+    {
+      "id": "76561198153434719",
+      "name": "Aztr",
+      "archetype": "anchor",
+      "x": -1.391,
+      "y": 2.083,
+      "n_games": 19
+    },
+    {
+      "id": "76561198161695114",
+      "name": "KnS",
+      "archetype": "anchor",
+      "x": -2.812,
+      "y": 1.695,
+      "n_games": 7
+    },
+    {
+      "id": "76561198171057149",
+      "name": "Scorch",
+      "archetype": "anchor",
+      "x": -4.586,
+      "y": 1.27,
+      "n_games": 5
+    },
+    {
+      "id": "76561198179762957",
+      "name": "sek",
+      "archetype": "flex",
+      "x": 2.351,
+      "y": -2.71,
+      "n_games": 5
+    },
+    {
+      "id": "76561198193599677",
+      "name": "Folly",
+      "archetype": "anchor",
+      "x": -2.098,
+      "y": -1.1,
+      "n_games": 5
+    },
+    {
+      "id": "76561198224723032",
+      "name": "kofyr",
+      "archetype": "flex",
+      "x": 0.355,
+      "y": -0.819,
+      "n_games": 29
+    },
+    {
+      "id": "76561198242455752",
+      "name": "Stake",
+      "archetype": "anchor",
+      "x": -3.377,
+      "y": 1.933,
+      "n_games": 5
+    },
+    {
+      "id": "76561198251294600",
+      "name": "Suspect",
+      "archetype": "striker",
+      "x": 0.533,
+      "y": 0.948,
+      "n_games": 10
+    },
+    {
+      "id": "76561198256947172",
+      "name": "2Die4",
+      "archetype": "striker",
+      "x": 2.636,
+      "y": 2.707,
+      "n_games": 5
+    },
+    {
+      "id": "76561198258466111",
+      "name": "ExoTiiK",
+      "archetype": "striker",
+      "x": -0.142,
+      "y": -1.296,
+      "n_games": 54
+    },
+    {
+      "id": "76561198276553458",
+      "name": "DRUFINHO",
+      "archetype": "flex",
+      "x": -0.22,
+      "y": -0.672,
+      "n_games": 23
+    },
+    {
+      "id": "76561198283318718",
+      "name": "DrKnown",
+      "archetype": "striker",
+      "x": 1.805,
+      "y": 0.237,
+      "n_games": 10
+    },
+    {
+      "id": "76561198284393407",
+      "name": "BeastMode",
+      "archetype": "striker",
+      "x": 2.923,
+      "y": -0.473,
+      "n_games": 59
+    },
+    {
+      "id": "76561198289610054",
+      "name": "Atow",
+      "archetype": "striker",
+      "x": 3.727,
+      "y": -0.47,
+      "n_games": 53
+    },
+    {
+      "id": "76561198291064036",
+      "name": "nerve",
+      "archetype": "anchor",
+      "x": -3.784,
+      "y": 2.039,
+      "n_games": 5
+    },
+    {
+      "id": "76561198296806355",
+      "name": "Zombie",
+      "archetype": "flex",
+      "x": -1.01,
+      "y": -2.528,
+      "n_games": 5
+    },
+    {
+      "id": "76561198300536450",
+      "name": "ejby",
+      "archetype": "anchor",
+      "x": -5.629,
+      "y": -1.187,
+      "n_games": 13
+    },
+    {
+      "id": "76561198301234310",
+      "name": "sad",
+      "archetype": "anchor",
+      "x": -1.452,
+      "y": -0.093,
+      "n_games": 19
+    },
+    {
+      "id": "76561198310026159",
+      "name": "Kevin",
+      "archetype": "flex",
+      "x": 1.701,
+      "y": -3.659,
+      "n_games": 14
+    },
+    {
+      "id": "76561198323209973",
+      "name": "lagly.",
+      "archetype": "striker",
+      "x": 1.047,
+      "y": -0.526,
+      "n_games": 5
+    },
+    {
+      "id": "76561198324387859",
+      "name": "Tox",
+      "archetype": "flex",
+      "x": 0.009,
+      "y": -0.24,
+      "n_games": 7
+    },
+    {
+      "id": "76561198327846028",
+      "name": "Firstkiller",
+      "archetype": "striker",
+      "x": 1.535,
+      "y": 1.693,
+      "n_games": 46
+    },
+    {
+      "id": "76561198329958930",
+      "name": "Caleb",
+      "archetype": "striker",
+      "x": 4.402,
+      "y": 0.808,
+      "n_games": 11
+    },
+    {
+      "id": "76561198344082226",
+      "name": "misery",
+      "archetype": "anchor",
+      "x": -1.495,
+      "y": 3.054,
+      "n_games": 7
+    },
+    {
+      "id": "76561198354196137",
+      "name": "Bemmz",
+      "archetype": "anchor",
+      "x": -2.819,
+      "y": 2.246,
+      "n_games": 7
+    },
+    {
+      "id": "76561198354634618",
+      "name": "hntr",
+      "archetype": "striker",
+      "x": 0.797,
+      "y": -0.024,
+      "n_games": 11
+    },
+    {
+      "id": "76561198379632184",
+      "name": "Jeff",
+      "archetype": "anchor",
+      "x": -5.02,
+      "y": -0.983,
+      "n_games": 5
+    },
+    {
+      "id": "76561198381037239",
+      "name": "Oski",
+      "archetype": "striker",
+      "x": 1.621,
+      "y": 0.24,
+      "n_games": 40
+    },
+    {
+      "id": "76561198381787004",
+      "name": "tawk",
+      "archetype": "flex",
+      "x": 1.624,
+      "y": -2.873,
+      "n_games": 17
+    },
+    {
+      "id": "76561198393153848",
+      "name": "flare",
+      "archetype": "striker",
+      "x": 2.012,
+      "y": -0.751,
+      "n_games": 7
+    },
+    {
+      "id": "76561198397306747",
+      "name": "oaly",
+      "archetype": "striker",
+      "x": 2.148,
+      "y": -0.359,
+      "n_games": 22
+    },
+    {
+      "id": "76561198398125000",
+      "name": "Lj",
+      "archetype": "anchor",
+      "x": -1.136,
+      "y": -0.293,
+      "n_games": 46
+    },
+    {
+      "id": "76561198409065326",
+      "name": "Snowyy",
+      "archetype": "flex",
+      "x": -0.748,
+      "y": -0.705,
+      "n_games": 14
+    },
+    {
+      "id": "76561198410931886",
+      "name": "Fever",
+      "archetype": "anchor",
+      "x": -0.471,
+      "y": 1.613,
+      "n_games": 9
+    },
+    {
+      "id": "76561198424940809",
+      "name": "crN .",
+      "archetype": "anchor",
+      "x": -2.89,
+      "y": -1.005,
+      "n_games": 7
+    },
+    {
+      "id": "76561198437927303",
+      "name": "LuiisP",
+      "archetype": "striker",
+      "x": 4.91,
+      "y": 1.946,
+      "n_games": 5
+    },
+    {
+      "id": "76561198440678470",
+      "name": "brAd",
+      "archetype": "flex",
+      "x": 1.652,
+      "y": -1.934,
+      "n_games": 5
+    },
+    {
+      "id": "76561198448833513",
+      "name": "Davitrox",
+      "archetype": "striker",
+      "x": 1.811,
+      "y": 1.09,
+      "n_games": 7
+    },
+    {
+      "id": "76561198449710328",
+      "name": "droppz",
+      "archetype": "striker",
+      "x": 3.872,
+      "y": 2.104,
+      "n_games": 5
+    },
+    {
+      "id": "76561198799189161",
+      "name": "Daniel",
+      "archetype": "striker",
+      "x": 1.824,
+      "y": 0.357,
+      "n_games": 59
+    },
+    {
+      "id": "76561198799226283",
+      "name": "Chronic",
+      "archetype": "anchor",
+      "x": -2.839,
+      "y": 0.211,
+      "n_games": 29
+    },
+    {
+      "id": "76561198802792967",
+      "name": "2Piece",
+      "archetype": "flex",
+      "x": -0.509,
+      "y": -0.476,
+      "n_games": 17
+    },
+    {
+      "id": "76561198803799478",
+      "name": "Lostt.",
+      "archetype": "anchor",
+      "x": -1.227,
+      "y": 1.049,
+      "n_games": 37
+    },
+    {
+      "id": "76561198807532049",
+      "name": "J",
+      "archetype": "anchor",
+      "x": -1.681,
+      "y": -0.932,
+      "n_games": 31
+    },
+    {
+      "id": "76561198823985212",
+      "name": "M0nkey M00n",
+      "archetype": "striker",
+      "x": 0.05,
+      "y": -0.48,
+      "n_games": 26
+    },
+    {
+      "id": "76561198826433632",
+      "name": "tehqoz",
+      "archetype": "striker",
+      "x": 1.999,
+      "y": 1.776,
+      "n_games": 14
+    },
+    {
+      "id": "76561198836875091",
+      "name": "evohpaniniwine",
+      "archetype": "anchor",
+      "x": -2.46,
+      "y": -0.088,
+      "n_games": 8
+    },
+    {
+      "id": "76561198838703744",
+      "name": "nass",
+      "archetype": "anchor",
+      "x": 0.038,
+      "y": 2.501,
+      "n_games": 40
+    },
+    {
+      "id": "76561198843262824",
+      "name": "Archie",
+      "archetype": "anchor",
+      "x": -0.688,
+      "y": -0.308,
+      "n_games": 44
+    },
+    {
+      "id": "76561198845948731",
+      "name": "cRR",
+      "archetype": "striker",
+      "x": 2.246,
+      "y": -1.879,
+      "n_games": 18
+    },
+    {
+      "id": "76561198856200686",
+      "name": "yANXNZ^^",
+      "archetype": "striker",
+      "x": 0.176,
+      "y": -0.13,
+      "n_games": 37
+    },
+    {
+      "id": "76561198872980900",
+      "name": "Rmn9",
+      "archetype": "striker",
+      "x": 1.688,
+      "y": 0.803,
+      "n_games": 7
+    },
+    {
+      "id": "76561198873085926",
+      "name": "Reysbull",
+      "archetype": "anchor",
+      "x": -1.646,
+      "y": 0.532,
+      "n_games": 19
+    },
+    {
+      "id": "76561198873686308",
+      "name": "rise.",
+      "archetype": "striker",
+      "x": 1.634,
+      "y": -2.945,
+      "n_games": 5
+    },
+    {
+      "id": "76561198879295437",
+      "name": "AtomiK",
+      "archetype": "anchor",
+      "x": -1.014,
+      "y": 0.775,
+      "n_games": 12
+    },
+    {
+      "id": "76561198880724484",
+      "name": "diaz",
+      "archetype": "striker",
+      "x": 0.842,
+      "y": -1.258,
+      "n_games": 16
+    },
+    {
+      "id": "76561198882536888",
+      "name": "Lunar",
+      "archetype": "striker",
+      "x": 0.808,
+      "y": 1.135,
+      "n_games": 8
+    },
+    {
+      "id": "76561198937066432",
+      "name": "wisty",
+      "archetype": "flex",
+      "x": 0.541,
+      "y": -4.104,
+      "n_games": 7
+    },
+    {
+      "id": "76561198953926134",
+      "name": "Sphinx",
+      "archetype": "striker",
+      "x": 2.139,
+      "y": -1.311,
+      "n_games": 14
+    },
+    {
+      "id": "76561198956605973",
+      "name": "TempoH",
+      "archetype": "anchor",
+      "x": -3.488,
+      "y": 1.872,
+      "n_games": 7
+    },
+    {
+      "id": "76561198959074903",
+      "name": "Fiberr",
+      "archetype": "anchor",
+      "x": -1.505,
+      "y": 0.272,
+      "n_games": 23
+    },
+    {
+      "id": "76561198960239428",
+      "name": "vatira",
+      "archetype": "striker",
+      "x": 1.935,
+      "y": 0.287,
+      "n_games": 53
+    },
+    {
+      "id": "76561198965054402",
+      "name": "Sweaty",
+      "archetype": "striker",
+      "x": 0.877,
+      "y": 0.76,
+      "n_games": 5
+    },
+    {
+      "id": "76561198969736671",
+      "name": "bananahead",
+      "archetype": "striker",
+      "x": 2.685,
+      "y": 1.303,
+      "n_games": 9
+    },
+    {
+      "id": "76561198974429177",
+      "name": "Joreuz",
+      "archetype": "anchor",
+      "x": -1.989,
+      "y": 2.702,
+      "n_games": 18
+    },
+    {
+      "id": "76561198980777579",
+      "name": "Kiileerrz",
+      "archetype": "anchor",
+      "x": -1.115,
+      "y": 2.394,
+      "n_games": 57
+    },
+    {
+      "id": "76561198984563626",
+      "name": "swiftt./",
+      "archetype": "anchor",
+      "x": -1.572,
+      "y": -0.117,
+      "n_games": 21
+    },
+    {
+      "id": "76561198994386260",
+      "name": "Atomic",
+      "archetype": "striker",
+      "x": 0.535,
+      "y": -0.346,
+      "n_games": 59
+    },
+    {
+      "id": "76561198994499073",
+      "name": "Rezears",
+      "archetype": "flex",
+      "x": -1.579,
+      "y": -0.927,
+      "n_games": 7
+    },
+    {
+      "id": "76561198994793330",
+      "name": "trk511",
+      "archetype": "striker",
+      "x": 2.961,
+      "y": 1.215,
+      "n_games": 24
+    },
+    {
+      "id": "76561198996913568",
+      "name": "PWR Superlachie",
+      "archetype": "anchor",
+      "x": -1.676,
+      "y": -0.063,
+      "n_games": 23
+    },
+    {
+      "id": "76561199000177080",
+      "name": "Kekkles",
+      "archetype": "striker",
+      "x": 3.271,
+      "y": -0.182,
+      "n_games": 8
+    },
+    {
+      "id": "76561199003737995",
+      "name": "Motta",
+      "archetype": "flex",
+      "x": -1.279,
+      "y": -3.665,
+      "n_games": 5
+    },
+    {
+      "id": "76561199008500031",
+      "name": "kaka",
+      "archetype": "striker",
+      "x": 2.807,
+      "y": -0.01,
+      "n_games": 11
+    },
+    {
+      "id": "76561199013030566",
+      "name": "juicy",
+      "archetype": "striker",
+      "x": 0.237,
+      "y": -1.466,
+      "n_games": 39
+    },
+    {
+      "id": "76561199013057612",
+      "name": "Seikoo",
+      "archetype": "anchor",
+      "x": -1.918,
+      "y": 2.902,
+      "n_games": 33
+    },
+    {
+      "id": "76561199014096651",
+      "name": "gunz",
+      "archetype": "anchor",
+      "x": -1.354,
+      "y": 1.089,
+      "n_games": 14
+    },
+    {
+      "id": "76561199017029799",
+      "name": "Rw9",
+      "archetype": "striker",
+      "x": 0.255,
+      "y": 0.748,
+      "n_games": 57
+    },
+    {
+      "id": "76561199019121536",
+      "name": "PWR gus",
+      "archetype": "anchor",
+      "x": -0.931,
+      "y": 0.041,
+      "n_games": 23
+    },
+    {
+      "id": "76561199019981824",
+      "name": "Nwpo",
+      "archetype": "striker",
+      "x": 4.759,
+      "y": 0.68,
+      "n_games": 18
+    },
+    {
+      "id": "76561199023677910",
+      "name": "ApparentlyJack",
+      "archetype": "anchor",
+      "x": -1.483,
+      "y": -1.344,
+      "n_games": 27
+    },
+    {
+      "id": "76561199027001075",
+      "name": "accro",
+      "archetype": "anchor",
+      "x": -1.954,
+      "y": 0.451,
+      "n_games": 13
+    },
+    {
+      "id": "76561199031413358",
+      "name": "dralii",
+      "archetype": "striker",
+      "x": 0.214,
+      "y": 0.737,
+      "n_games": 60
+    },
+    {
+      "id": "76561199045907333",
+      "name": "reveal",
+      "archetype": "striker",
+      "x": 0.874,
+      "y": -0.083,
+      "n_games": 16
+    },
+    {
+      "id": "76561199047701758",
+      "name": "stizzy",
+      "archetype": "anchor",
+      "x": -0.827,
+      "y": 0.451,
+      "n_games": 41
+    },
+    {
+      "id": "76561199056379402",
+      "name": "Wahvey",
+      "archetype": "striker",
+      "x": 2.579,
+      "y": -0.99,
+      "n_games": 17
+    },
+    {
+      "id": "76561199073713301",
+      "name": "laxin",
+      "archetype": "flex",
+      "x": 2.944,
+      "y": -1.331,
+      "n_games": 8
+    },
+    {
+      "id": "76561199576880536",
+      "name": "kevinacho",
+      "archetype": "striker",
+      "x": -0.179,
+      "y": 0.512,
+      "n_games": 7
+    },
+    {
+      "id": "7b0a8337c2c14d3fb124a0c701012bc9",
+      "name": "Cyx511",
+      "archetype": "anchor",
+      "x": -4.911,
+      "y": -3.152,
+      "n_games": 5
+    },
+    {
+      "id": "cd781f576dae47d39601c9faaa32e74a",
+      "name": "ravioli.",
+      "archetype": "flex",
+      "x": -0.601,
+      "y": -1.497,
+      "n_games": 5
+    },
+    {
+      "id": "1c696a4c7ee04dbf826b83e4b443c489",
+      "name": "N1TR.",
+      "archetype": "unknown",
+      "x": -2.429,
+      "y": -0.551,
+      "n_games": 1
+    },
+    {
+      "id": "76561198082519855",
+      "name": "Khrade",
+      "archetype": "unknown",
+      "x": -1.367,
+      "y": -3.447,
+      "n_games": 4
+    },
+    {
+      "id": "76561198121103999",
+      "name": "M7sn",
+      "archetype": "unknown",
+      "x": -2.666,
+      "y": -2.552,
+      "n_games": 4
+    },
+    {
+      "id": "76561198189603111",
+      "name": "C4",
+      "archetype": "unknown",
+      "x": -12.428,
+      "y": 1.449,
+      "n_games": 3
+    },
+    {
+      "id": "76561198192459242",
+      "name": "RLCS REFEREE",
+      "archetype": "unknown",
+      "x": -24.288,
+      "y": -9.006,
+      "n_games": 1
+    },
+    {
+      "id": "76561198277776128",
+      "name": "kexii",
+      "archetype": "unknown",
+      "x": -0.928,
+      "y": -1.737,
+      "n_games": 1
+    },
+    {
+      "id": "76561198283907953",
+      "name": "Tossis.",
+      "archetype": "unknown",
+      "x": 1.72,
+      "y": -2.438,
+      "n_games": 4
+    },
+    {
+      "id": "76561198303997299",
+      "name": "tweex",
+      "archetype": "unknown",
+      "x": 3.123,
+      "y": -2.649,
+      "n_games": 1
+    },
+    {
+      "id": "76561198306438173",
+      "name": "RLCS Referee",
+      "archetype": "unknown",
+      "x": -32.24,
+      "y": -0.533,
+      "n_games": 1
+    },
+    {
+      "id": "76561198353053405",
+      "name": "Mesho",
+      "archetype": "unknown",
+      "x": -0.584,
+      "y": -1.513,
+      "n_games": 4
+    },
+    {
+      "id": "76561198807164849",
+      "name": "Rayy14",
+      "archetype": "unknown",
+      "x": -4.133,
+      "y": -0.932,
+      "n_games": 4
+    },
+    {
+      "id": "76561198812926287",
+      "name": "kam",
+      "archetype": "unknown",
+      "x": 0.41,
+      "y": 2.58,
+      "n_games": 1
+    },
+    {
+      "id": "76561198866065551",
+      "name": "76561198",
+      "archetype": "unknown",
+      "x": 2.595,
+      "y": -4.644,
+      "n_games": 2
+    },
+    {
+      "id": "76561199033743889",
+      "name": "T7LM",
+      "archetype": "unknown",
+      "x": 0.419,
+      "y": -2.107,
+      "n_games": 4
+    },
+    {
+      "id": "76561199041206257",
+      "name": "wt",
+      "archetype": "unknown",
+      "x": -1.731,
+      "y": 0.081,
+      "n_games": 4
+    },
+    {
+      "id": "76561199043382504",
+      "name": "Mohanned",
+      "archetype": "unknown",
+      "x": -2.158,
+      "y": 1.27,
+      "n_games": 4
+    },
+    {
+      "id": "76561199048494276",
+      "name": "76561199",
+      "archetype": "unknown",
+      "x": -2.16,
+      "y": 2.93,
+      "n_games": 4
+    },
+    {
+      "id": "76561199083377130",
+      "name": "twnzr",
+      "archetype": "unknown",
+      "x": -1.46,
+      "y": 5.455,
+      "n_games": 1
+    },
+    {
+      "id": "8443b8fa058b45c9b8b3af631e39f9a1",
+      "name": "Krepezy",
+      "archetype": "unknown",
+      "x": -2.135,
+      "y": -1.61,
+      "n_games": 4
+    },
+    {
+      "id": "c8de705537ba4831ad0e6656a2839d50",
+      "name": "Teschow.",
+      "archetype": "unknown",
+      "x": -1.176,
+      "y": -2.122,
+      "n_games": 1
+    },
+    {
+      "id": "e772949d6e854ecbad57d8fca178289a",
+      "name": "RLCS Admin 2",
+      "archetype": "unknown",
+      "x": -31.775,
+      "y": -1.397,
+      "n_games": 1
+    }
+  ],
+  "explained_variance": [
+    0.224,
+    0.1219
+  ],
+  "silhouette": 0.1204
+}
