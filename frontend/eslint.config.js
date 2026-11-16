@@ -19,4 +19,10 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    // TanStack Router file routes export both `Route` and their component by
+    // design, which this Vite fast-refresh rule can't distinguish.
+    files: ["src/routes/**/*.{ts,tsx}"],
+    rules: { "react-refresh/only-export-components": "off" },
+  },
 ]);
