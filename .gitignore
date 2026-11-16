@@ -46,8 +46,3 @@ coverage.xml
 .idea/
 .vscode/
 *.swp
-
-# Miscellaneous Data
-/docs
-/notes
-DEPLOY_PLAN.md
