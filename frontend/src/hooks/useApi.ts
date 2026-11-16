@@ -17,6 +17,9 @@ export function useQuery<T>(fetcher: () => Promise<T>) {
     }
   }, [])
 
+  // Fetch-on-mount: the synchronous loading/error resets inside run() are
+  // intentional so refetch() shows the same state transitions.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { run() }, [run])
 
   return { data, loading, error, refetch: run }

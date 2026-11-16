@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { ZapIcon, ShieldHalf, BicepsFlexed } from "lucide-react";
 interface Props {
   archetype: string;
@@ -11,7 +12,7 @@ const ARCHETYPE_STYLES: Record<string, string> = {
   unknown: "bg-slate-500/20 text-slate-400 border-slate-500/40",
 };
 
-const ARCHETYPE_ICONS: Record<string, any> = {
+const ARCHETYPE_ICONS: Record<string, ReactNode> = {
   striker: <ZapIcon className="h-3 w-3" />,
   anchor: <ShieldHalf className="h-3 w-3" />,
   flex: <BicepsFlexed className="h-3 w-3" />,

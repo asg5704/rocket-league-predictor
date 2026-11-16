@@ -6,6 +6,7 @@
 
 [![Live demo](https://img.shields.io/badge/live%20demo-rlcs--roster--optimizer-2ea44f?style=for-the-badge)](https://rlcs-roster-optimizer.alexandergarcia.xyz/)
 
+[![CI](https://github.com/asg5704/rocket-league-predictor/actions/workflows/ci.yml/badge.svg)](https://github.com/asg5704/rocket-league-predictor/actions/workflows/ci.yml)
 [![pip-audit](https://github.com/asg5704/rocket-league-predictor/actions/workflows/pip-audit.yml/badge.svg)](https://github.com/asg5704/rocket-league-predictor/actions/workflows/pip-audit.yml)
 ![Python](https://img.shields.io/badge/python-3.14-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
@@ -38,20 +39,16 @@ Given a pool of professional Rocket League players, the optimizer ranks every po
   <img src="docs/img/optimizer.jpg" alt="Lineup optimizer ranking trios from a six-player pool by synergy, archetype and Elo" width="880">
 </p>
 
-<p align="center">
-  <img src="docs/img/archetypes.jpg" alt="PCA scatter plot of K-Means player archetypes: Striker, Anchor and Flex" width="880">
-</p>
-
 ## Features
 
-| | |
-|---|---|
-| **Team optimizer** | Search all `C(n, 3)` trios from the players you select and rank them by composite score |
-| **Elo ratings** | Per-player and per-team ratings built from match results (start 1500, K = 32) |
-| **Player archetypes** | K-Means clustering over 22 per-player statistics, with an interactive PCA scatter plot |
-| **Synergy score** | Measures how well a trio's archetypes complement each other |
-| **Win probability** | Logistic regression and XGBoost baselines, evaluated with cross-validation |
-| **Retraining workflow** | Documented, incremental ETL for adding new tournaments ([ETL.md](docs/ETL.md)) |
+|                         |                                                                                         |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| **Team optimizer**      | Search all `C(n, 3)` trios from the players you select and rank them by composite score |
+| **Elo ratings**         | Per-player and per-team ratings built from match results (start 1500, K = 32)           |
+| **Player archetypes**   | K-Means clustering over 22 per-player statistics, with an interactive PCA scatter plot  |
+| **Synergy score**       | Measures how well a trio's archetypes complement each other                             |
+| **Win probability**     | Logistic regression and XGBoost baselines, evaluated with cross-validation              |
+| **Retraining workflow** | Documented, incremental ETL for adding new tournaments ([ETL.md](docs/ETL.md))          |
 
 ## How it works
 
@@ -79,9 +76,9 @@ flowchart LR
 
 Cross-validated on RLCS World Championship 2026 data (328 matches, 121 players, 45 teams):
 
-| Model | Accuracy | ROC-AUC |
-|---|---|---|
-| XGBoost | 55.7% | 0.60 |
+| Model   | Accuracy | ROC-AUC |
+| ------- | -------- | ------- |
+| XGBoost | 55.7%    | 0.60    |
 
 Pro matches are close by nature, and the dataset is small. The model carries a real but weak signal, so treat the output as a ranking aid and not a betting oracle. Synergy scores are also in-sample: the optimizer favors historically strong trios and does not make forward predictions. Every retrain is logged on the app's About page.
 
@@ -131,11 +128,11 @@ PYTHONPATH=. pytest
 
 ## API
 
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/players` | Players available to the optimizer |
-| `POST` | `/api/optimize` | Rank trios from a selected player pool |
-| `GET` | `/api/elo-ratings` | Current team Elo leaderboard |
+| Method | Endpoint           | Description                            |
+| ------ | ------------------ | -------------------------------------- |
+| `GET`  | `/api/players`     | Players available to the optimizer     |
+| `POST` | `/api/optimize`    | Rank trios from a selected player pool |
+| `GET`  | `/api/elo-ratings` | Current team Elo leaderboard           |
 
 With the backend running, interactive docs are served by FastAPI at `/docs` unless disabled in production.
 
