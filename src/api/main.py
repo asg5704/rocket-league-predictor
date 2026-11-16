@@ -26,6 +26,7 @@ import pandas as pd  # used in _load_player_teams and _build_player_index
 from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from src.api.schemas import (
     EloRatingOut,
@@ -259,6 +260,26 @@ def get_elo_ratings() -> EloRatingsResponse:
 # during local dev, where Vite's own dev server serves the SPA instead.
 # ---------------------------------------------------------------------------
 
+class SPAStaticFiles(StaticFiles):
+    """StaticFiles that serves index.html for unknown client-side routes.
+
+    TanStack Router handles paths like /about in the browser, so a direct
+    visit or refresh must return the app shell instead of a 404. Missing
+    files (anything with an extension, e.g. /assets/x.js) and unknown /api/*
+    paths still 404 so real errors are not masked by HTML.
+    """
+
+    async def get_response(self, path: str, scope):
+        try:
+            return await super().get_response(path, scope)
+        except StarletteHTTPException as exc:
+            is_api = path == "api" or path.startswith("api/")
+            has_extension = "." in Path(path).name
+            if exc.status_code == 404 and not is_api and not has_extension:
+                return await super().get_response("index.html", scope)
+            raise
+
+
 _FRONTEND_DIST = _ROOT / "frontend_dist"
 if _FRONTEND_DIST.is_dir():
-    app.mount("/", StaticFiles(directory=_FRONTEND_DIST, html=True), name="frontend")
+    app.mount("/", SPAStaticFiles(directory=_FRONTEND_DIST, html=True), name="frontend")

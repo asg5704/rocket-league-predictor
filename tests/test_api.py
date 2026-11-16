@@ -263,3 +263,39 @@ class TestOptimize:
             },
         )
         assert resp.status_code == 422
+
+
+# ---------------------------------------------------------------------------
+# SPA static fallback
+# ---------------------------------------------------------------------------
+
+class TestSPAStaticFiles:
+    @pytest.fixture()
+    def spa_client(self, tmp_path):
+        from fastapi import FastAPI
+
+        from src.api.main import SPAStaticFiles
+
+        (tmp_path / "index.html").write_text("<html>app shell</html>")
+        (tmp_path / "assets").mkdir()
+        (tmp_path / "assets" / "app.js").write_text("console.log(1)")
+        spa = FastAPI()
+        spa.mount("/", SPAStaticFiles(directory=tmp_path, html=True))
+        return TestClient(spa)
+
+    def test_root_serves_index(self, spa_client):
+        assert "app shell" in spa_client.get("/").text
+
+    def test_unknown_route_falls_back_to_index(self, spa_client):
+        resp = spa_client.get("/about")
+        assert resp.status_code == 200
+        assert "app shell" in resp.text
+
+    def test_existing_asset_served(self, spa_client):
+        assert spa_client.get("/assets/app.js").text == "console.log(1)"
+
+    def test_missing_asset_is_404(self, spa_client):
+        assert spa_client.get("/assets/missing.js").status_code == 404
+
+    def test_unknown_api_path_is_404(self, spa_client):
+        assert spa_client.get("/api/nope").status_code == 404
