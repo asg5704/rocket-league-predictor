@@ -38,6 +38,7 @@ from src.api.schemas import (
     PlayerOut,
     PlayersResponse,
 )
+from src.api.roster_overrides import apply_roster_overrides, load_overrides
 from src.models.elo import EloModel
 from src.models.synergy_score import SynergyScoreModel
 from src.models.team_optimizer import TeamOptimizer
@@ -45,6 +46,7 @@ from src.models.team_optimizer import TeamOptimizer
 _ROOT = Path(__file__).resolve().parents[2]
 _DATA = _ROOT / "data" / "processed"
 _MODELS = _ROOT / "data" / "models"
+_ROSTER_OVERRIDES = _ROOT / "data" / "players" / "roster_overrides.json"
 
 
 # ---------------------------------------------------------------------------
@@ -114,6 +116,9 @@ async def lifespan(app: FastAPI):
     player_teams_df = _load_player_teams(
         _DATA / "player_stats.parquet",
         _DATA / "matches.parquet",
+    )
+    player_teams_df = apply_roster_overrides(
+        player_teams_df, player_names, load_overrides(_ROSTER_OVERRIDES)
     )
 
     player_index = _build_player_index(
