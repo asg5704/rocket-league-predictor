@@ -20,7 +20,7 @@
 [How it works](#how-it-works) ·
 [Quickstart](#quickstart) ·
 [API](#api) ·
-[Blog series](https://alexandergarcia.dev/blog/rocket-league-ml-series)
+[Blog series](https://alexandergarcia.dev/projects/rlcs-roster-optimizer#the-blog-series)
 
 </div>
 
