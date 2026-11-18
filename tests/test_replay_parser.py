@@ -156,9 +156,14 @@ class TestMatchParsing:
         assert match["winner"] == "orange"
 
     def test_team_names(self):
-        match, _ = parse_replay(_make_replay(blue_name="Karmine Corp", orange_name="NRG"))
+        match, _ = parse_replay(_make_replay(blue_name="Karmine Corp", orange_name="Team Falcons"))
         assert match["blue_team_name"] == "Karmine Corp"
-        assert match["orange_team_name"] == "NRG"
+        assert match["orange_team_name"] == "Team Falcons"
+
+    def test_team_name_aliases_are_canonicalised(self):
+        match, _ = parse_replay(_make_replay(blue_name="NRG", orange_name="GK ESPORTS"))
+        assert match["blue_team_name"] == "NRG ESPORTS"
+        assert match["orange_team_name"] == "GEEKAY ESPORTS"
 
     def test_duration_and_overtime(self):
         match, _ = parse_replay(_make_replay(duration=315, overtime=True))

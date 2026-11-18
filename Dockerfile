@@ -1,5 +1,5 @@
 # --- Stage 1: build the React frontend ---------------------------------
-FROM node:22-alpine AS frontend
+FROM node:26-alpine AS frontend
 WORKDIR /app
 RUN npm install -g pnpm@11.5.2
 COPY frontend/package.json frontend/pnpm-lock.yaml ./
@@ -36,6 +36,7 @@ COPY src/ src/
 COPY data/processed/ data/processed/
 COPY data/models/ data/models/
 COPY data/players/roster_overrides.json data/players/roster_overrides.json
+COPY data/players/manual_players.json data/players/manual_players.json
 COPY --from=frontend /app/dist ./frontend_dist
 
 ENV APP_ENV=production

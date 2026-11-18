@@ -1,5 +1,20 @@
 [
   {
+    "date": "2026-11-18",
+    "title": "Team-name alias cleanup",
+    "matches": 328,
+    "players": 121,
+    "teams": 41,
+    "silhouette": 0.12,
+    "xgboostAccuracy": 0.557,
+    "xgboostRocAuc": 0.603,
+    "top3": [
+      "Gentle Mates",
+      "Team Falcons",
+      "Wildcard"
+    ]
+  },
+  {
     "date": "2026-10-06",
     "title": "RLCS World Championship 2026",
     "matches": 328,
@@ -8,7 +23,11 @@
     "silhouette": 0.12,
     "xgboostAccuracy": 0.557,
     "xgboostRocAuc": 0.603,
-    "top3": ["Gentlemates", "Team Falcons", "Wildcard"]
+    "top3": [
+      "Gentlemates",
+      "Team Falcons",
+      "Wildcard"
+    ]
   },
   {
     "date": "2026-10-05",
@@ -19,6 +38,10 @@
     "silhouette": 0.1,
     "xgboostAccuracy": 0.531,
     "xgboostRocAuc": 0.561,
-    "top3": ["Gentlemates", "Team Vitality", "Wildcard"]
+    "top3": [
+      "Gentlemates",
+      "Team Vitality",
+      "Wildcard"
+    ]
   }
 ]

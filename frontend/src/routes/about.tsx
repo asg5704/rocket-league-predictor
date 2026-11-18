@@ -9,10 +9,15 @@ import {
   AlertTriangle,
   ScatterChart,
   History,
+  Palette,
+  ExternalLink,
 } from "lucide-react";
 import { ArchetypeBadge } from "../components/ArchetypeBadge";
 import { ArchetypeClusterChart } from "../components/ArchetypeClusterChart";
 import changelog from "../data/model_changelog.json";
+import uiChangelog from "../data/ui_changelog.json";
+
+const REPO_URL = "https://github.com/asg5704/rocket-league-predictor";
 
 export const Route = createFileRoute("/about")({
   component: About,
@@ -30,10 +35,10 @@ function Section({
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-2">
-        <div className="text-cyan-400">{icon}</div>
-        <h3 className="text-lg font-semibold text-slate-200">{title}</h3>
+        <div className="text-boost">{icon}</div>
+        <h3 className="font-display text-2xl font-extrabold uppercase tracking-wide text-ink">{title}</h3>
       </div>
-      <div className="pl-6 flex flex-col gap-1.5 text-base text-slate-400 leading-relaxed">
+      <div className="pl-6 flex flex-col gap-1.5 text-base text-body leading-relaxed">
         {children}
       </div>
     </div>
@@ -57,44 +62,50 @@ function Metric({
   );
 }
 
+const TAB =
+  "min-h-11 w-full rounded-md px-4 py-2 text-left font-display text-lg font-bold uppercase tracking-wider text-muted transition-colors hover:bg-surface hover:text-ink data-[state=active]:bg-boost data-[state=active]:text-deep";
+
 function About() {
   return (
     <Tabs.Root
-      className="flex-1 max-w-7xl mx-auto w-full px-4 lg:px-6 py-6 grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6 items-start"
+      className="mx-auto grid w-full max-w-7xl grid-cols-1 items-start gap-6 px-4 py-6 lg:grid-cols-[260px_1fr] lg:px-6"
       defaultValue="how-to-use"
       orientation="vertical"
     >
       <Tabs.List
         aria-label="How to use"
-        className="flex flex-col items-start space-y-2"
+        className="flex w-full flex-col lg:sticky lg:top-24"
       >
         <Tabs.Trigger
-          className="data-[state='active']:font-bold"
+          className={TAB}
           value="how-to-use"
         >
           How to use
         </Tabs.Trigger>
-        <Tabs.Trigger className="data-[state='active']:font-bold" value="about">
+        <Tabs.Trigger className={TAB} value="about">
           About this project
         </Tabs.Trigger>
+        <Tabs.Trigger className={TAB} value="changelog">
+          Changelog
+        </Tabs.Trigger>
         <Tabs.Trigger
-          className="data-[state='active']:font-bold"
+          className={TAB}
           value="warning"
         >
           Warning
         </Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content
-        className="relative w-full max-w-5xl bg-surface border border-border-dim rounded-2xl shadow-2xl flex flex-col animate-slide-up"
+        className="panel relative flex w-full max-w-5xl animate-slide-up flex-col"
         value="how-to-use"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-border-dim flex-shrink-0">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-line flex-shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center">
-              <Rocket size={14} className="text-orange-400" />
+            <div className="flex h-8 w-8 -skew-x-[12deg] items-center justify-center bg-boost">
+              <Rocket size={14} className="skew-x-[12deg] text-deep" />
             </div>
-            <h2 className="text-xl font-bold text-white">
+            <h2 className="font-display text-3xl font-extrabold uppercase tracking-wide text-ink">
               How to use the Lineup Optimizer
             </h2>
           </div>
@@ -117,7 +128,7 @@ function About() {
             </p>
             <div className="flex flex-wrap gap-1.5 mt-1">
               {["striker", "anchor", "flex"].map((a) => (
-                <ArchetypeBadge archetype={a} />
+                <ArchetypeBadge key={a} archetype={a} />
               ))}
             </div>
             <p className="mt-1">
@@ -135,17 +146,17 @@ function About() {
               composite score.
             </p>
             <div className="grid grid-cols-1 lg:grid-cols-[130px_1fr] space-y-2">
-              <Metric label="Synergy" color="text-emerald-400">
+              <Metric label="Synergy" color="text-boost">
                 How much the trio's actual win rate exceeded their
                 model-predicted win rate. Positive = overperforms; negative =
                 underperforms.
               </Metric>
-              <Metric label="Archetype" color="text-violet-400">
+              <Metric label="Archetype" color="text-flex">
                 A bonus based on role composition. Data shows
                 flex+striker+striker outperforms balanced lineups; triple-flex
                 scores lowest.
               </Metric>
-              <Metric label="Elo Strength" color="text-cyan-400">
+              <Metric label="Elo Strength" color="text-ice">
                 Average team Elo of the three RLCS players. <em>Higher Elo</em>{" "}
                 = stronger recent form across RLCS matches.
               </Metric>
@@ -165,24 +176,24 @@ function About() {
 
           <Section icon={<TrendingUp size={20} />} title="Reading the results">
             <div className="grid grid-cols-1 lg:grid-cols-[130px_1fr] space-y-2">
-              <Metric label="Score" color="text-blue-400">
+              <Metric label="Score" color="text-ice">
                 Weighted composite: synergy + archetype bonus + normalised Elo.
               </Metric>
-              <Metric label="Synergy" color="text-emerald-400">
+              <Metric label="Synergy" color="text-boost">
                 Raw synergy value. Computed as actual trio win rate minus the
                 mean win probability predicted by the model.
               </Metric>
-              <Metric label="Avg Elo" color="text-cyan-400">
+              <Metric label="Avg Elo" color="text-ice">
                 Mean team Elo across the three players (initial = 1500, K = 32,
                 chronological).
               </Metric>
             </div>
-            <div className="flex items-start gap-2 bg-amber-500/5 border border-amber-500/20 rounded-lg px-2.5 py-2 mt-1">
+            <div className="flex items-start gap-2 bg-warn/10 border border-warn/40 rounded-md px-2.5 py-2 mt-1">
               <AlertTriangle
                 size={12}
-                className="text-amber-500 flex-shrink-0 mt-0.5"
+                className="text-warn flex-shrink-0 mt-0.5"
               />
-              <span className="text-amber-500/80">
+              <span className="text-warn">
                 A low-sample warning appears when fewer than 10 matches were
                 used to compute a trio's synergy score — treat those lineups as
                 exploratory.
@@ -202,56 +213,25 @@ function About() {
             </p>
           </Section>
 
-          <Section icon={<History size={20} />} title="Model changelog">
-            <p>
-              Each retrain with new Ballchasing data is logged here, newest
-              first.
-            </p>
-            <ul className="flex flex-col gap-3">
-              {changelog.map((e) => (
-                <li
-                  key={e.date}
-                  className="border border-border-dim rounded-lg px-3 py-2 text-xs leading-relaxed"
-                >
-                  <div className="flex items-baseline justify-between gap-2">
-                    <span className="text-slate-200 font-medium">{e.title}</span>
-                    <span className="text-slate-500">{e.date}</span>
-                  </div>
-                  <div className="text-slate-400">
-                    {e.matches} matches · {e.players} players · {e.teams} teams
-                  </div>
-                  <div className="text-slate-400">
-                    XGBoost accuracy {(e.xgboostAccuracy * 100).toFixed(1)}% ·
-                    ROC-AUC {e.xgboostRocAuc.toFixed(2)} · silhouette{" "}
-                    {e.silhouette.toFixed(2)}
-                  </div>
-                  <div className="text-slate-400">
-                    Top 3: {e.top3.join(", ")}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </Section>
-
           {/* Data note */}
-          <div className="border-t border-border-dim pt-4 text-xs text-slate-600 leading-relaxed">
+          <div className="border-t border-line pt-4 text-sm text-muted leading-relaxed">
             Data sourced from Ballchasing.com · 328 RLCS replays · 121 players ·
-            45 teams. Synergy scores are in-sample — the optimizer favours
+            41 teams. Synergy scores are in-sample — the optimizer favours
             historically strong trios, not forward predictions.
           </div>
         </div>
       </Tabs.Content>
       <Tabs.Content
-        className="relative w-full max-w-5xl bg-surface border border-border-dim rounded-2xl shadow-2xl flex flex-col animate-slide-up"
+        className="panel relative flex w-full max-w-5xl animate-slide-up flex-col"
         value="about"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-border-dim flex-shrink-0">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-line flex-shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center">
-              <Rocket size={16} className="text-orange-400" />
+            <div className="flex h-8 w-8 -skew-x-[12deg] items-center justify-center bg-boost">
+              <Rocket size={16} className="skew-x-[12deg] text-deep" />
             </div>
-            <h2 className="text-xl font-bold text-white">About</h2>
+            <h2 className="font-display text-3xl font-extrabold uppercase tracking-wide text-ink">About</h2>
           </div>
         </div>
 
@@ -270,7 +250,7 @@ function About() {
               hit crazy shots and the{" "}
               <a
                 href="https://ballchasing.com"
-                className="underline text-slate-500"
+                className="underline text-ice hover:text-ink"
               >
                 BallChasing
               </a>{" "}
@@ -317,7 +297,7 @@ function About() {
               on the full feature set, not these two components.
             </p>
             <ArchetypeClusterChart />
-            <p className="text-xs text-slate-600 mt-1">
+            <p className="text-sm text-muted mt-1">
               Silhouette score ≈ 0.12 — clusters are directional rather than
               tightly separated, which tracks with how fluid pro RL roles
               actually are.
@@ -330,7 +310,7 @@ function About() {
               interested in this I have an entire{" "}
               <a
                 href="https://alexandergarcia.dev/blog/rocket-league-ml-series"
-                className="underline text-indigo-500"
+                className="underline text-ice hover:text-ink"
               >
                 blog series
               </a>{" "}
@@ -340,23 +320,104 @@ function About() {
         </div>
       </Tabs.Content>
       <Tabs.Content
-        className="relative w-full max-w-5xl bg-surface border border-border-dim rounded-2xl shadow-2xl flex flex-col animate-slide-up"
+        className="panel relative flex w-full max-w-5xl animate-slide-up flex-col"
+        value="changelog"
+      >
+        <div className="flex items-center justify-between px-6 py-4 border-b border-line flex-shrink-0">
+          <div className="flex items-center gap-2.5">
+            <div className="flex h-8 w-8 -skew-x-[12deg] items-center justify-center bg-boost">
+              <History size={16} className="skew-x-[12deg] text-deep" />
+            </div>
+            <h2 className="font-display text-3xl font-extrabold uppercase tracking-wide text-ink">Changelog</h2>
+          </div>
+        </div>
+
+        <div className="overflow-y-auto scrollbar-thin px-6 py-5 flex flex-col gap-6">
+          <Section icon={<History size={20} />} title="Model updates">
+            <p>
+              Each retrain with new Ballchasing data is logged here, newest
+              first.
+            </p>
+            <ul className="flex flex-col gap-3">
+              {changelog.map((e) => (
+                <li
+                  key={e.date}
+                  className="border border-line rounded-md bg-deep px-3 py-2 text-sm leading-relaxed"
+                >
+                  <div className="flex items-baseline justify-between gap-2">
+                    <span className="text-ink font-semibold">{e.title}</span>
+                    <span className="text-muted">{e.date}</span>
+                  </div>
+                  <div className="text-body">
+                    {e.matches} matches · {e.players} players · {e.teams} teams
+                  </div>
+                  <div className="text-body">
+                    XGBoost accuracy {(e.xgboostAccuracy * 100).toFixed(1)}% ·
+                    ROC-AUC {e.xgboostRocAuc.toFixed(2)} · silhouette{" "}
+                    {e.silhouette.toFixed(2)}
+                  </div>
+                  <div className="text-body">
+                    Top 3: {e.top3.join(", ")}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </Section>
+
+          <Section icon={<Palette size={20} />} title="UI tweaks">
+            <ul className="flex flex-col gap-3">
+              {uiChangelog.map((e) => (
+                <li
+                  key={e.date}
+                  className="border border-line rounded-md bg-deep px-3 py-2 text-sm leading-relaxed"
+                >
+                  <div className="flex items-baseline justify-between gap-2">
+                    <span className="text-ink font-semibold">{e.title}</span>
+                    <span className="text-muted">{e.date}</span>
+                  </div>
+                  <ul className="mt-1 list-disc pl-5 text-body">
+                    {e.changes.map((c) => (
+                      <li key={c}>{c}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </Section>
+
+          <Section icon={<ExternalLink size={20} />} title="Source code">
+            <p>
+              Full history, issues and setup instructions live on GitHub:{" "}
+              <a
+                href={REPO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-ice underline underline-offset-2 hover:text-boost-hot"
+              >
+                asg5704/rocket-league-predictor
+              </a>
+            </p>
+          </Section>
+        </div>
+      </Tabs.Content>
+      <Tabs.Content
+        className="panel relative flex w-full max-w-5xl animate-slide-up flex-col"
         value="warning"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-border-dim flex-shrink-0">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-line flex-shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg bg-red-500/20 border border-red-500/30 flex items-center justify-center">
-              <AlertTriangle size={16} className="text-red-400" />
+            <div className="flex h-8 w-8 -skew-x-[12deg] items-center justify-center bg-bad">
+              <AlertTriangle size={16} className="skew-x-[12deg] text-deep" />
             </div>
-            <h2 className="text-xl font-bold text-white">Warning</h2>
+            <h2 className="font-display text-3xl font-extrabold uppercase tracking-wide text-ink">Warning</h2>
           </div>
         </div>
 
         {/* Scrollable body */}
         <div className="overflow-y-auto scrollbar-thin px-6 py-5 flex flex-col gap-6">
           <Section
-            icon={<AlertTriangle size={16} className="text-red-400" />}
+            icon={<AlertTriangle size={16} className="skew-x-[12deg] text-deep" />}
             title="Notice"
           >
             <p>

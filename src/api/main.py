@@ -28,6 +28,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
+from src.api.team_status import TeamInfo, load_team_info
 from src.api.schemas import (
     EloRatingOut,
     EloRatingsResponse,
@@ -38,7 +39,12 @@ from src.api.schemas import (
     PlayerOut,
     PlayersResponse,
 )
-from src.api.roster_overrides import apply_roster_overrides, load_overrides
+from src.api.roster_overrides import (
+    apply_roster_overrides,
+    load_manual_players,
+    load_overrides,
+    merge_rosters,
+)
 from src.models.elo import EloModel
 from src.models.synergy_score import SynergyScoreModel
 from src.models.team_optimizer import TeamOptimizer
@@ -47,6 +53,7 @@ _ROOT = Path(__file__).resolve().parents[2]
 _DATA = _ROOT / "data" / "processed"
 _MODELS = _ROOT / "data" / "models"
 _ROSTER_OVERRIDES = _ROOT / "data" / "players" / "roster_overrides.json"
+_MANUAL_PLAYERS = _ROOT / "data" / "players" / "manual_players.json"
 
 
 # ---------------------------------------------------------------------------
@@ -70,6 +77,32 @@ def _load_player_teams(player_stats_path: Path, matches_path: Path) -> pd.DataFr
         .last()
         .reset_index()
     )
+
+
+def _load_team_rosters(
+    player_stats_path: Path,
+    matches_path: Path,
+    player_names: dict[str, str],
+) -> dict[str, list[str]]:
+    """Return team_name → display names of the lineup in the team's latest match."""
+    ps = pd.read_parquet(player_stats_path)[["match_id", "player_id", "team_side"]]
+    matches = pd.read_parquet(matches_path)[
+        ["match_id", "date", "blue_team_name", "orange_team_name"]
+    ]
+    merged = ps.merge(matches, on="match_id")
+    merged["date"] = pd.to_datetime(merged["date"], utc=True)
+    merged["team_name"] = merged["blue_team_name"].where(
+        merged["team_side"] == "blue", merged["orange_team_name"]
+    )
+    latest = merged.groupby("team_name")["date"].transform("max")
+    current = merged[merged["date"] == latest]
+    return {
+        team: sorted(
+            {player_names.get(pid, pid) for pid in grp["player_id"]},
+            key=str.lower,
+        )
+        for team, grp in current.groupby("team_name")
+    }
 
 
 def _build_player_index(
@@ -110,6 +143,7 @@ async def lifespan(app: FastAPI):
         for pid, name in json.loads((_DATA / "player_names.json").read_text()).items()
         if not any(kw in name.lower() for kw in _DUMMY_KEYWORDS)
     }
+    player_names.update(load_manual_players(_MANUAL_PLAYERS, player_names))
     elo_model = EloModel.load(_MODELS / "elo.pkl")
     synergy_model = SynergyScoreModel.load(_MODELS / "synergy_score.pkl")
     archetypes_df = pd.read_parquet(_DATA / "player_archetypes.parquet")
@@ -117,8 +151,12 @@ async def lifespan(app: FastAPI):
         _DATA / "player_stats.parquet",
         _DATA / "matches.parquet",
     )
+    replay_teams_df = player_teams_df
     player_teams_df = apply_roster_overrides(
-        player_teams_df, player_names, load_overrides(_ROSTER_OVERRIDES)
+        replay_teams_df,
+        player_names,
+        load_overrides(_ROSTER_OVERRIDES),
+        known_teams=set(elo_model.ratings_df()["team_name"]),
     )
 
     player_index = _build_player_index(
@@ -135,6 +173,15 @@ async def lifespan(app: FastAPI):
     app.state.player_index = player_index
     app.state.optimizer = optimizer
     app.state.elo_model = elo_model
+    app.state.team_rosters = merge_rosters(
+        _load_team_rosters(
+            _DATA / "player_stats.parquet", _DATA / "matches.parquet", player_names
+        ),
+        replay_teams_df,
+        player_teams_df,
+        player_names,
+    )
+    app.state.team_info = load_team_info(_DATA / "team_status.json")
 
     yield
 
@@ -252,11 +299,29 @@ def optimize(req: OptimizeRequest) -> OptimizeResponse:
 def get_elo_ratings() -> EloRatingsResponse:
     """Return all team Elo ratings sorted descending."""
     ratings_df = app.state.elo_model.ratings_df()
-    ratings = [
-        EloRatingOut(rank=i + 1, team_name=row["team_name"], elo=round(row["elo"], 2))
-        for i, row in ratings_df.iterrows()
-    ]
-    return EloRatingsResponse(ratings=ratings, total=len(ratings))
+    rosters = app.state.team_rosters
+    info: dict[str, TeamInfo] = app.state.team_info
+    rows = []
+    for _, row in ratings_df.iterrows():
+        team = row["team_name"]
+        meta = info.get(team, TeamInfo())
+        rows.append((team, round(row["elo"], 2), meta))
+    active = [r for r in rows if r[2].status == "active"]
+    defunct = [r for r in rows if r[2].status != "active"]
+
+    def _out(team: str, elo: float, meta: TeamInfo, rank: int | None) -> EloRatingOut:
+        return EloRatingOut(
+            rank=rank,
+            team_name=team,
+            elo=elo,
+            country=meta.country,
+            status=meta.status,
+            roster=rosters.get(team, []),
+        )
+
+    ratings = [_out(*r, rank=i + 1) for i, r in enumerate(active)]
+    ratings += [_out(*r, rank=None) for r in defunct]
+    return EloRatingsResponse(ratings=ratings, total=len(active))
 
 
 # ---------------------------------------------------------------------------

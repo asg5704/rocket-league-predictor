@@ -6,20 +6,21 @@
 
 [![Live demo](https://img.shields.io/badge/live%20demo-rlcs--roster--optimizer-2ea44f?style=for-the-badge)](https://rlcs-roster-optimizer.alexandergarcia.xyz/)
 
+[![CI](https://github.com/asg5704/rocket-league-predictor/actions/workflows/ci.yml/badge.svg)](https://github.com/asg5704/rocket-league-predictor/actions/workflows/ci.yml)
 [![pip-audit](https://github.com/asg5704/rocket-league-predictor/actions/workflows/pip-audit.yml/badge.svg)](https://github.com/asg5704/rocket-league-predictor/actions/workflows/pip-audit.yml)
 ![Python](https://img.shields.io/badge/python-3.14-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-263-brightgreen)
+![Tests](https://img.shields.io/badge/tests-269-brightgreen)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 [Live demo](https://rlcs-roster-optimizer.alexandergarcia.xyz/) ·
 [How it works](#how-it-works) ·
 [Quickstart](#quickstart) ·
 [API](#api) ·
-[Blog series](https://alexandergarcia.dev/blog/rocket-league-ml-series)
+[Blog series](https://alexandergarcia.dev/projects/rlcs-roster-optimizer#the-blog-series)
 
 </div>
 
@@ -32,7 +33,7 @@ Given a pool of professional Rocket League players, the optimizer ranks every po
 - **Real pro data.** Replays from RLCS tournaments, pulled from the [Ballchasing](https://ballchasing.com) API. Ranked ladder matches are out of scope.
 - **Three ideas combined.** Each trio is scored on team Elo, the mix of player archetypes, and a learned synergy score.
 - **Honest about its limits.** The win-probability model is only modestly better than a coin flip (see [Model performance](#model-performance)), and the README says so.
-- **Production-shaped.** FastAPI backend, React frontend, a single multi-stage Docker image, CI dependency auditing, and 263 tests.
+- **Production-shaped.** FastAPI backend, React frontend, a single multi-stage Docker image, CI dependency auditing, and 269 tests.
 
 <p align="center">
   <img src="docs/img/optimizer.jpg" alt="Lineup optimizer ranking trios from a six-player pool by synergy, archetype and Elo" width="880">
@@ -149,7 +150,7 @@ With the backend running, interactive docs are served by FastAPI at `/docs` unle
 │   ├── models/           Trained model artifacts
 │   ├── processed/        Parquet tables used at runtime
 │   └── players/          Hand-curated pro player registry
-├── tests/                263 pytest tests
+├── tests/                269 pytest tests
 ├── Dockerfile            Multi-stage build: frontend, trimmed Python deps, slim runtime
 └── docs/                 ETL.md (retraining guide) and README screenshots
 ```

@@ -70,11 +70,14 @@ class OptimizeResponse(BaseModel):
 # ---------------------------------------------------------------------------
 
 class EloRatingOut(BaseModel):
-    rank: int
+    rank: int | None  # None for defunct teams (not ranked)
     team_name: str
     elo: float
+    country: str | None = None  # lowercase ISO 3166-1 alpha-2, e.g. "us"
+    status: str = "active"  # "active" | "defunct"
+    roster: list[str] = Field(default_factory=list)
 
 
 class EloRatingsResponse(BaseModel):
-    ratings: list[EloRatingOut]
-    total: int
+    ratings: list[EloRatingOut]  # active teams ranked first, then defunct
+    total: int  # number of active (ranked) teams

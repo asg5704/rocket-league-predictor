@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Search, X, Users } from "lucide-react";
+import { Search, X, Check } from "lucide-react";
 import type { Player } from "../api/client";
 import { ArchetypeBadge } from "./ArchetypeBadge";
 
@@ -9,26 +9,12 @@ interface Props {
   onToggle: (id: string) => void;
   onClear: () => void;
 }
-// "all", "striker", "anchor", "flex"
-const ARCHETYPE_FILTERS = [
-  { type: "all", color: "slate" },
-  {
-    type: "striker",
-    color: "rose",
-  },
-  {
-    type: "anchor",
-    color: "cyan",
-  },
-  {
-    type: "flex",
-    color: "violet",
-  },
-] as const;
+
+const ARCHETYPE_FILTERS = ["all", "striker", "anchor", "flex"] as const;
 
 export function PlayerPicker({ players, selected, onToggle, onClear }: Props) {
   const [search, setSearch] = useState("");
-  const [archetypeFilter, setArchetypeFilter] = useState("all");
+  const [archetypeFilter, setArchetypeFilter] = useState<string>("all");
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase();
@@ -47,131 +33,109 @@ export function PlayerPicker({ players, selected, onToggle, onClear }: Props) {
 
   return (
     <div className="flex flex-col gap-3">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Users size={16} className="text-cyan-400" />
-          <span className="text-sm font-semibold text-slate-200">
-            Player Pool
-          </span>
-          <span className="text-xs text-slate-500">
-            ({selectedCount} selected)
-          </span>
-        </div>
-        {selectedCount > 0 && (
-          <button
-            onClick={onClear}
-            className="flex items-center gap-1 text-xs text-slate-500 hover:text-slate-300 transition-colors"
-          >
-            <X size={12} />
-            Clear all
-          </button>
-        )}
-      </div>
+      <h2 className="sr-only">Player pool</h2>
+      {selectedCount > 0 && (
+        <button
+          onClick={onClear}
+          className="flex min-h-9 items-center gap-1 self-end px-2 text-sm text-muted transition-colors hover:text-ink"
+        >
+          <X size={14} aria-hidden="true" />
+          Clear all
+        </button>
+      )}
 
-      {/* Search */}
       <div className="relative">
+        <label htmlFor="player-search" className="sr-only">
+          Search players or teams
+        </label>
         <Search
-          size={14}
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"
+          size={16}
+          aria-hidden="true"
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-muted"
         />
         <input
-          type="text"
+          id="player-search"
+          type="search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search players or teams..."
-          className="w-full bg-surface border border-border-dim rounded-lg pl-9 pr-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all"
+          placeholder="Search players or teams…"
+          className="min-h-11 w-full rounded-md border border-line bg-deep py-2 pl-9 pr-3 text-base text-ink placeholder:text-muted transition-colors hover:border-line-bright focus:border-boost"
         />
       </div>
 
-      {/* Archetype filter pills */}
-      <div className="flex gap-1.5">
-        {ARCHETYPE_FILTERS.map((f) => (
-          <button
-            key={f.type}
-            onClick={() => setArchetypeFilter(f?.type)}
-            className={`px-3 py-1 rounded-full text-xs font-medium border transition-all ${
-              archetypeFilter === f?.type
-                ? `bg-${f?.color}-500/20 text-${f?.color}-400 border-${f?.color}-500/50`
-                : "bg-transparent text-slate-400 border-border-dim hover:border-border-bright hover:text-slate-400"
-            }`}
-          >
-            {f.type === "all"
-              ? "All"
-              : f?.type?.charAt(0).toUpperCase() + f?.type?.slice(1)}
-          </button>
-        ))}
+      <div role="group" aria-label="Filter by archetype" className="flex flex-wrap gap-1.5">
+        {ARCHETYPE_FILTERS.map((type) => {
+          const active = archetypeFilter === type;
+          return (
+            <button
+              key={type}
+              aria-pressed={active}
+              onClick={() => setArchetypeFilter(type)}
+              className={`min-h-9 -skew-x-[12deg] border px-3 font-display text-sm font-bold uppercase tracking-wider transition-colors ${
+                active
+                  ? "border-boost bg-boost text-deep"
+                  : "border-line text-body hover:border-line-bright hover:bg-raised"
+              }`}
+            >
+              <span className="inline-block skew-x-[12deg]">{type}</span>
+            </button>
+          );
+        })}
       </div>
 
-      {/* Player list */}
-      <div className="overflow-y-auto scrollbar-thin rounded-lg border border-border-dim bg-surface max-h-56 sm:max-h-72 lg:max-h-96">
+      <div className="scrollbar-thin max-h-72 overflow-y-auto rounded-md border border-line bg-deep lg:max-h-[28rem]">
         {filtered.length === 0 ? (
-          <div className="py-8 text-center text-sm text-slate-500">
+          <div className="py-8 text-center text-sm text-muted">
             No players found
           </div>
         ) : (
-          <div className="divide-y divide-border-dim">
+          <ul className="divide-y divide-line">
             {filtered.map((player) => {
               const isSelected = selected.has(player.player_id);
               return (
-                <button
-                  key={player.player_id}
-                  onClick={() => onToggle(player.player_id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 text-left transition-all hover:bg-white/[0.03] ${
-                    isSelected ? "bg-cyan-500/[0.06]" : ""
-                  }`}
-                >
-                  {/* Checkbox */}
-                  <div
-                    className={`w-4 h-4 rounded border flex-shrink-0 flex items-center justify-center transition-all ${
+                <li key={player.player_id}>
+                  <button
+                    role="checkbox"
+                    aria-checked={isSelected}
+                    onClick={() => onToggle(player.player_id)}
+                    className={`flex min-h-14 w-full items-center gap-3 px-3 py-2 text-left transition-colors hover:bg-raised ${
                       isSelected
-                        ? "bg-cyan-500 border-cyan-500"
-                        : "border-border-bright bg-transparent"
+                        ? "bg-raised ring-1 ring-inset ring-boost/70"
+                        : ""
                     }`}
                   >
-                    {isSelected && (
-                      <svg
-                        viewBox="0 0 10 8"
-                        className="w-2.5 h-2 text-bg fill-current"
-                      >
-                        <path
-                          d="M1 4l3 3 5-6"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          fill="none"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    )}
-                  </div>
-
-                  {/* Player info */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span
-                        className={`text-sm font-medium truncate ${isSelected ? "text-cyan-300" : "text-slate-200"}`}
-                      >
-                        {player.display_name}
+                    <span
+                      aria-hidden="true"
+                      className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-[3px] border transition-colors ${
+                        isSelected
+                          ? "border-boost bg-boost text-deep"
+                          : "border-line-bright"
+                      }`}
+                    >
+                      {isSelected && <Check size={14} strokeWidth={3} />}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="flex items-center gap-2">
+                        <span className="truncate font-display text-lg font-bold uppercase tracking-wide text-ink">
+                          {player.display_name}
+                        </span>
+                        <ArchetypeBadge archetype={player.archetype} />
                       </span>
-                      <ArchetypeBadge archetype={player.archetype} />
-                    </div>
-                    <div className="text-xs text-slate-500/80 truncate mt-0.5">
-                      {player.team_name ?? "Unknown team"}
-                    </div>
-                  </div>
-
-                  {/* Elo */}
-                  <div className="text-right flex-shrink-0">
-                    <div className="text-xs font-mono text-slate-400 font-medium">
-                      {Math.round(player.elo)}
-                    </div>
-                    <div className="text-[10px] text-slate-600">Elo rating</div>
-                  </div>
-                </button>
+                      <span className="block truncate text-sm text-muted">
+                        {player.team_name ?? "Free agent"}
+                      </span>
+                    </span>
+                    <span className="shrink-0 text-right">
+                      <span className="num block text-lg text-ink">
+                        {Math.round(player.elo)}
+                      </span>
+                      <span className="eyebrow block text-[0.6875rem]">Elo</span>
+                    </span>
+                  </button>
+                </li>
               );
             })}
-          </div>
+          </ul>
         )}
       </div>
     </div>

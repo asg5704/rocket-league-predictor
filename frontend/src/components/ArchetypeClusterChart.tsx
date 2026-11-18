@@ -10,13 +10,13 @@ import {
 import clusterData from "../data/archetype_clusters.json";
 import { ArchetypeBadge } from "./ArchetypeBadge";
 
-const SURFACE = "#151528";
+const SURFACE = "#102d63";
 
 const ARCHETYPE_COLORS: Record<string, string> = {
-  striker: "#f43f5e",
-  anchor: "#06b6d4",
-  flex: "#8b5cf6",
-  unknown: "#64748b",
+  striker: "#ff6b7a",
+  anchor: "#5cc8ff",
+  flex: "#b79cff",
+  unknown: "#9fb6e0",
 };
 
 // Secondary (non-color) identity channel, since two of the archetype hues
@@ -104,10 +104,10 @@ function ClusterTooltip({
   if (!active || !payload?.length) return null;
   const p = payload[0].payload;
   return (
-    <div className="bg-surface border border-border-bright rounded-lg px-3 py-2 shadow-xl flex flex-col gap-1.5">
-      <span className="text-sm font-semibold text-slate-200">{p.name}</span>
+    <div className="bg-deep border border-line-bright rounded-md px-3 py-2 shadow-xl flex flex-col gap-1.5">
+      <span className="font-display text-lg font-bold uppercase text-ink">{p.name}</span>
       <ArchetypeBadge archetype={p.archetype} />
-      <span className="text-xs text-slate-500">{p.n_games} games</span>
+      <span className="text-sm text-muted">{p.n_games} games</span>
     </div>
   );
 }
@@ -123,37 +123,37 @@ export function ArchetypeClusterChart() {
       <div className="h-80 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <ScatterChart margin={{ top: 8, right: 16, bottom: 8, left: 0 }}>
-            <CartesianGrid stroke="#1e1e3a" strokeWidth={1} />
+            <CartesianGrid stroke="#24488f" strokeWidth={1} />
             <XAxis
               type="number"
               dataKey="x"
               tick={false}
-              axisLine={{ stroke: "#1e1e3a" }}
+              axisLine={{ stroke: "#24488f" }}
               tickLine={false}
               label={{
                 value: `PC1 (${(pc1Variance * 100).toFixed(0)}% variance)`,
                 position: "insideBottom",
                 offset: -4,
-                fill: "#64748b",
-                fontSize: 11,
+                fill: "#9fb6e0",
+                fontSize: 12,
               }}
             />
             <YAxis
               type="number"
               dataKey="y"
               tick={false}
-              axisLine={{ stroke: "#1e1e3a" }}
+              axisLine={{ stroke: "#24488f" }}
               tickLine={false}
               label={{
                 value: `PC2 (${(pc2Variance * 100).toFixed(0)}% variance)`,
                 angle: -90,
                 position: "insideLeft",
-                fill: "#64748b",
-                fontSize: 11,
+                fill: "#9fb6e0",
+                fontSize: 12,
               }}
             />
             <Tooltip
-              cursor={{ stroke: "#2e2e5a", strokeWidth: 1 }}
+              cursor={{ stroke: "#3866b8", strokeWidth: 1 }}
               content={<ClusterTooltip />}
             />
             <Scatter data={points} shape={<Marker />} isAnimationActive={false} />
