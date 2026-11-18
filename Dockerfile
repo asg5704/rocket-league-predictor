@@ -11,7 +11,7 @@ RUN pnpm run build
 # Kept separate from the runtime stage so build-only tools (binutils, used
 # to strip debug symbols from compiled extensions) never end up in the
 # final image.
-FROM python:3.14-slim AS py-builder
+FROM python:3.15-slim AS py-builder
 WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends binutils \
     && rm -rf /var/lib/apt/lists/*
@@ -28,7 +28,7 @@ RUN SITE_PACKAGES=/usr/local/lib/python3.14/site-packages && \
     find "$SITE_PACKAGES" -name '__pycache__' -exec rm -rf {} +
 
 # --- Stage 3: runtime — slim base + trimmed deps + built frontend -------
-FROM python:3.14-slim AS backend
+FROM python:3.15-slim AS backend
 WORKDIR /app
 
 COPY --from=py-builder /usr/local/lib/python3.14/site-packages /usr/local/lib/python3.14/site-packages
