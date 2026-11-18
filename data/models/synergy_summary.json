@@ -1,8 +1,8 @@
 {
   "n_trios": 48,
-  "synergy_mean": -0.06740085332261796,
-  "synergy_std": 0.2829485354549568,
-  "synergy_max": 0.5341376392009305,
-  "synergy_min": -0.5341376392009304,
+  "synergy_mean": -0.06772451494090702,
+  "synergy_std": 0.2793365572627809,
+  "synergy_max": 0.5293040293040294,
+  "synergy_min": -0.5293040293040294,
   "low_sample_trios": 3
 }

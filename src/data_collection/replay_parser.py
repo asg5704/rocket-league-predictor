@@ -17,6 +17,7 @@ The caller is responsible for filtering out None matches before writing to parqu
 
 from typing import Optional
 
+from src.data_collection.team_aliases import canonical_team
 from src.data_collection.schema import (
     MatchRaw,
     PlayerStatsRaw,
@@ -150,8 +151,8 @@ def parse_replay(
         date=replay.get("date", ""),
         playlist_type=playlist_type,
         team_size=team_size,
-        blue_team_name=blue.get("name"),
-        orange_team_name=orange.get("name"),
+        blue_team_name=canonical_team(blue.get("name")),
+        orange_team_name=canonical_team(orange.get("name")),
         blue_goals=blue_goals,
         orange_goals=orange_goals,
         winner=_winner(blue_goals, orange_goals),
