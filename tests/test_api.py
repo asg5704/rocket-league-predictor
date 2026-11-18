@@ -6,10 +6,13 @@ Uses the real trained models and data — tests exercise the full stack
 from HTTP request to model inference and response serialization.
 """
 
+import json
+
 import pytest
 from fastapi.testclient import TestClient
 
-from src.api.main import app
+from src.api.main import _DATA, _ROOT, app
+from src.api.roster_overrides import load_manual_players
 
 # ---------------------------------------------------------------------------
 # Client fixture — shared across all tests; lifespan runs once per session
@@ -39,9 +42,18 @@ class TestGetPlayers:
         body = client.get("/api/players").json()
         assert body["total"] == len(body["players"])
 
-    def test_returns_all_116_players(self, client):
+    def test_returns_all_registered_players(self, client):
+        # Every entry in player_names.json except RLCS referee/admin dummies.
+        names = json.loads((_DATA / "player_names.json").read_text())
+        names.update(
+            load_manual_players(_ROOT / "data" / "players" / "manual_players.json", names)
+        )
+        expected = [
+            n for n in names.values()
+            if not any(kw in n.lower() for kw in ("referee", "admin"))
+        ]
         body = client.get("/api/players").json()
-        assert body["total"] == 116
+        assert body["total"] == len(expected)
 
     def test_player_has_required_fields(self, client):
         player = client.get("/api/players").json()["players"][0]
@@ -91,7 +103,9 @@ class TestGetEloRatings:
 
     def test_total_matches_ratings_length(self, client):
         body = client.get("/api/elo-ratings").json()
-        assert body["total"] == len(body["ratings"])
+        # total counts ranked (active) teams; defunct teams follow, unranked
+        ranked = [r for r in body["ratings"] if r["rank"] is not None]
+        assert body["total"] == len(ranked)
 
     def test_rating_has_required_fields(self, client):
         rating = client.get("/api/elo-ratings").json()["ratings"][0]
@@ -101,13 +115,15 @@ class TestGetEloRatings:
 
     def test_ranks_are_consecutive_from_one(self, client):
         ratings = client.get("/api/elo-ratings").json()["ratings"]
-        ranks = [r["rank"] for r in ratings]
-        assert ranks == list(range(1, len(ratings) + 1))
+        ranks = [r["rank"] for r in ratings if r["rank"] is not None]
+        assert ranks == list(range(1, len(ranks) + 1))
 
     def test_sorted_by_elo_descending(self, client):
         ratings = client.get("/api/elo-ratings").json()["ratings"]
-        elos = [r["elo"] for r in ratings]
-        assert elos == sorted(elos, reverse=True)
+        for group in ([r for r in ratings if r["rank"] is not None],
+                      [r for r in ratings if r["rank"] is None]):
+            elos = [r["elo"] for r in group]
+            assert elos == sorted(elos, reverse=True)
 
     def test_gentle_mates_is_top_team(self, client):
         top = client.get("/api/elo-ratings").json()["ratings"][0]

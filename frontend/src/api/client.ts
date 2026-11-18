@@ -43,7 +43,8 @@ export interface OptimizeResponse {
 }
 
 export interface EloRating {
-  rank: number
+  rank: number | null // null for defunct teams (not ranked)
+  status: 'active' | 'defunct'
   team_name: string
   elo: number
   country: string | null

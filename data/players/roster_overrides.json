@@ -1,0 +1,382 @@
+{
+  "overrides": [
+    {
+      "player": "nass",
+      "team": "TEAM VITALITY",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Oski",
+      "team": "TEAM VITALITY",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "diaz",
+      "team": "TEAM VITALITY",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Atow",
+      "team": "GENTLE MATES",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "vatira",
+      "team": "GENTLE MATES",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "zen",
+      "team": "GENTLE MATES",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Daniel",
+      "team": "REBELLION",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Firstkiller",
+      "team": "REBELLION",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Atomic",
+      "team": "REBELLION",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "reveal",
+      "team": "SPACESTATION",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "zach",
+      "team": "SPACESTATION",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "solar",
+      "team": "SPACESTATION",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "BeastMode",
+      "team": "Gen.G Mobil1 Racing",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Chronic",
+      "team": "Gen.G Mobil1 Racing",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "tawk",
+      "team": "Gen.G Mobil1 Racing",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Rw9",
+      "team": "TEAM FALCONS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Kiileerrz",
+      "team": "TEAM FALCONS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "dralii",
+      "team": "TEAM FALCONS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "M0nkey M00n",
+      "team": "KARMINE CORP",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "reyyn",
+      "team": "KARMINE CORP",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "bibbaba",
+      "team": "KARMINE CORP",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "2Piece",
+      "team": "NRG ESPORTS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "frosty",
+      "team": "NRG ESPORTS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Wahvey",
+      "team": "NRG ESPORTS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "bananahead",
+      "team": "Wildcard",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "hntr",
+      "team": "Wildcard",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Caleb",
+      "team": "Wildcard",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Bemmz",
+      "team": "FAZE ESPORTS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "crN .",
+      "team": "FAZE ESPORTS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Lostt.",
+      "team": "FAZE ESPORTS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "cRR",
+      "team": "NIP",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "stizzy",
+      "team": "NIP",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "prozy",
+      "team": "NIP",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Nwpo",
+      "team": "TWISTED MINDS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "trk511",
+      "team": "TWISTED MINDS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Ghaazi",
+      "team": "TWISTED MINDS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Sweaty",
+      "team": "Pioneers",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "gunz",
+      "team": "Pioneers",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "tehqoz",
+      "team": "Pioneers",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "CHEESE.",
+      "team": "FUT Esports",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "jstn.",
+      "team": "FUT Esports",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Lj",
+      "team": "FUT Esports",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "yANXNZ^^",
+      "team": "FURIA",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "swiftt./",
+      "team": "FURIA",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "kv1.exe",
+      "team": "FURIA",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Fiberr",
+      "team": "PWR",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "gus",
+      "team": "PWR",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Fever",
+      "team": "PWR",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Archie",
+      "team": "ALL GAMERS GLOBAL",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "oaly",
+      "team": "ALL GAMERS GLOBAL",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Joyo",
+      "team": "ALL GAMERS GLOBAL",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "ajg",
+      "team": "HERETICS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "AtomiK",
+      "team": "HERETICS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Dorito",
+      "team": "HERETICS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Kevin",
+      "team": "WOLVES ESPORTS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Sphinx",
+      "team": "WOLVES ESPORTS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Cata",
+      "team": "WOLVES ESPORTS",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "accro",
+      "team": "Man City Esports",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "rise.",
+      "team": "Man City Esports",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "TempoH",
+      "team": "Man City Esports",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Joreuz",
+      "team": "M80",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "DRUFINHO",
+      "team": "M80",
+      "effective": "2026-10-30",
+      "note": ""
+    },
+    {
+      "player": "Motta",
+      "team": "M80",
+      "effective": "2026-10-30",
+      "note": ""
+    }
+  ]
+}

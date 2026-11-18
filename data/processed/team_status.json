@@ -1,0 +1,168 @@
+{
+  "AIGHT": {
+    "country": null,
+    "status": "active"
+  },
+  "AMAPIANO": {
+    "country": null,
+    "status": "active"
+  },
+  "AMETHYST": {
+    "country": "br",
+    "status": "active"
+  },
+  "BAT ON WHEELS": {
+    "country": null,
+    "status": "active"
+  },
+  "BIGODES": {
+    "country": "br",
+    "status": "active"
+  },
+  "BROCROCROS": {
+    "country": null,
+    "status": "active"
+  },
+  "BULLDOGS": {
+    "country": null,
+    "status": "active"
+  },
+  "CHINATOWN": {
+    "country": null,
+    "status": "active"
+  },
+  "CHROMAX": {
+    "country": "br",
+    "status": "active"
+  },
+  "DEATH CLOUD": {
+    "country": null,
+    "status": "active"
+  },
+  "DELACRUZ": {
+    "country": "gb",
+    "status": "active"
+  },
+  "DOS": {
+    "country": "sa",
+    "status": "active"
+  },
+  "FIVE FEARS": {
+    "country": "us",
+    "status": "active"
+  },
+  "FURIA": {
+    "country": "br",
+    "status": "active"
+  },
+  "GEEKAY ESPORTS": {
+    "country": "sa",
+    "status": "active"
+  },
+  "GENTLE MATES": {
+    "country": "fr",
+    "status": "active"
+  },
+  "KARMINE CORP": {
+    "country": "fr",
+    "status": "active"
+  },
+  "MADE IN BRAZIL": {
+    "country": "br",
+    "status": "active"
+  },
+  "MAGNIFICO": {
+    "country": "br",
+    "status": "active"
+  },
+  "MANCHESTER CITY": {
+    "country": "gb",
+    "status": "active"
+  },
+  "NIP": {
+    "country": "se",
+    "status": "active"
+  },
+  "NORTHSTAR": {
+    "country": null,
+    "status": "active"
+  },
+  "NOVADRIFT": {
+    "country": null,
+    "status": "active"
+  },
+  "NRG ESPORTS": {
+    "country": "us",
+    "status": "active"
+  },
+  "PIONEERS": {
+    "country": "us",
+    "status": "active"
+  },
+  "PWR": {
+    "country": "au",
+    "status": "active"
+  },
+  "REBELLION": {
+    "country": "ca",
+    "status": "active"
+  },
+  "SAILING": {
+    "country": "us",
+    "status": "active"
+  },
+  "SANIFICADOS": {
+    "country": null,
+    "status": "active"
+  },
+  "SPACESTATION": {
+    "country": "us",
+    "status": "active"
+  },
+  "TEAM FALCONS": {
+    "country": "sa",
+    "status": "active"
+  },
+  "TEAM MMA": {
+    "country": null,
+    "status": "active"
+  },
+  "TEAM SECRET": {
+    "country": null,
+    "status": "active"
+  },
+  "TEAM VITALITY": {
+    "country": "fr",
+    "status": "active"
+  },
+  "THE ULTIMATES": {
+    "country": "sa",
+    "status": "active"
+  },
+  "TWISTED MINDS": {
+    "country": "sa",
+    "status": "active"
+  },
+  "VIRTUS.PRO": {
+    "country": "us",
+    "status": "defunct",
+    "note": "defunct"
+  },
+  "WILDCARD": {
+    "country": "us",
+    "status": "active"
+  },
+  "WOLVES ESPORTS": {
+    "country": "gb",
+    "status": "active",
+    "note": "Purchased TSM team"
+  },
+  "WRG": {
+    "country": null,
+    "status": "active"
+  },
+  "YEAH BRUV": {
+    "country": null,
+    "status": "active"
+  }
+}

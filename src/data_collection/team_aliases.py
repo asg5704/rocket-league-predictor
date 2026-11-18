@@ -32,6 +32,8 @@ ALIASES: dict[str, str] = {
     "MAN CITY": "MANCHESTER CITY",
     "NRG": "NRG ESPORTS",
     "MIBR": "MADE IN BRAZIL",
+    "MAN CITY ESPORTS": "MANCHESTER CITY",
+    "TSM": "WOLVES ESPORTS"
 }
 
 

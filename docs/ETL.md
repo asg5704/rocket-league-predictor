@@ -80,7 +80,7 @@ spellings. After a download, list the distinct names
 `src/data_collection/team_aliases.py` (alias → canonical full name), then run
 `python -m src.data_collection.team_aliases` to rewrite the existing parquet.
 New downloads are canonicalised automatically at parse time. Also add any new
-team to `data/processed/team_countries.json`.
+team to `data/processed/team_status.json` (country, and `"status": "defunct"` if it has ended).
 
 ### 4a. Elo ratings
 

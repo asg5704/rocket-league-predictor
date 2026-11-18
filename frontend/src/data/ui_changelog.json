@@ -3,6 +3,7 @@
     "date": "2026-11-18",
     "title": "Leaderboard flags and rosters; changelog tab",
     "changes": [
+      "Defunct teams move to a collapsed Inactive teams section on the leaderboard and are no longer ranked; players without a team show as Free agent.",
       "Leaderboard columns are now #, Country, Team, Roster and Elo.",
       "Leaderboard rows now show each team's country flag and current roster under the team name, so the mobile view uses its full width.",
       "Model and UI changelogs moved to their own tab under About, with a link to the GitHub repository."

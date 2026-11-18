@@ -122,7 +122,7 @@ export function PlayerPicker({ players, selected, onToggle, onClear }: Props) {
                         <ArchetypeBadge archetype={player.archetype} />
                       </span>
                       <span className="block truncate text-sm text-muted">
-                        {player.team_name ?? "Unknown team"}
+                        {player.team_name ?? "Free agent"}
                       </span>
                     </span>
                     <span className="shrink-0 text-right">

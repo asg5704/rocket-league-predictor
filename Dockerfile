@@ -35,6 +35,8 @@ COPY --from=py-builder /usr/local/lib/python3.14/site-packages /usr/local/lib/py
 COPY src/ src/
 COPY data/processed/ data/processed/
 COPY data/models/ data/models/
+COPY data/players/roster_overrides.json data/players/roster_overrides.json
+COPY data/players/manual_players.json data/players/manual_players.json
 COPY --from=frontend /app/dist ./frontend_dist
 
 ENV APP_ENV=production
