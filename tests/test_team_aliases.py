@@ -24,9 +24,9 @@ def test_canonical_names_are_never_aliases():
 def test_normalize_matches_rewrites_file(tmp_path):
     path = tmp_path / "matches.parquet"
     pd.DataFrame(
-        {"blue_team_name": ["MIBR", "TSM"], "orange_team_name": ["TSM", "GK ESPORTS"]}
+        {"blue_team_name": ["MIBR", "MANCHESTER CITY"], "orange_team_name": ["MANCHESTER CITY", "GK ESPORTS"]}
     ).to_parquet(path)
     assert normalize_matches(path) == 2
     out = pd.read_parquet(path)
-    assert out["blue_team_name"].tolist() == ["MADE IN BRAZIL", "TSM"]
-    assert out["orange_team_name"].tolist() == ["TSM", "GEEKAY ESPORTS"]
+    assert out["blue_team_name"].tolist() == ["MADE IN BRAZIL", "MANCHESTER CITY"]
+    assert out["orange_team_name"].tolist() == ["MANCHESTER CITY", "GEEKAY ESPORTS"]
