@@ -1,14 +1,67 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap");
 
 @import "tailwindcss";
 
+/*
+ * Night Match design system
+ * Rocket League arena at night: navy shell, orange boost accent,
+ * condensed display type, skewed boost-segment meters.
+ */
 @theme {
-  --color-bkg: #0e0e1b;
-  --color-surface: #151528;
-  --color-border-dim: #1e1e3a;
-  --color-border-bright: #2e2e5a;
-  --font-sans: Inter, "system-ui", sans-serif;
-  --font-mono: "Jetbrains Mono", monospace;
+  /* Surfaces (darkest -> lightest) */
+  --color-bkg: #0b1f45;
+  --color-deep: #08173a;
+  --color-surface: #102d63;
+  --color-raised: #163a7a;
+
+  /* Lines */
+  --color-line: #24488f;
+  --color-line-bright: #3866b8;
+
+  /* Text */
+  --color-ink: #ffffff;
+  --color-body: #d6e2fa;
+  --color-muted: #9fb6e0;
+
+  /* Signals */
+  --color-boost: #ff7a18;
+  --color-boost-hot: #ff9347;
+  --color-ice: #7aa7ff;
+  --color-ice-deep: #4f8dff;
+  --color-good: #4ade80;
+  --color-bad: #ff6b7a;
+  --color-warn: #fbbf24;
+
+  /* Archetypes (hue + shape + label, never hue alone) */
+  --color-striker: #ff6b7a;
+  --color-anchor: #5cc8ff;
+  --color-flex: #b79cff;
+
+  --font-sans: Barlow, system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --animate-slide-up: slide-up 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 220ms ease-out both;
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 @layer base {
@@ -18,18 +71,75 @@
 
   html {
     color-scheme: dark;
+    background: var(--color-bkg);
   }
 
   body {
     margin: 0;
-    padding: 0;
-    font-family: "monospace", system-ui, sans-serif;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-body);
+    background:
+      radial-gradient(
+        1200px 500px at 85% -10%,
+        rgb(255 122 24 / 0.07),
+        transparent 60%
+      ),
+      var(--color-bkg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   #root {
-    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  button,
+  [role="tab"],
+  [role="checkbox"],
+  a {
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-boost-hot);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--color-boost);
+    color: var(--color-deep);
+  }
+}
+
+@layer components {
+  /* Condensed uppercase label used for meters, table heads, eyebrows */
+  .eyebrow {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .panel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+  }
+
+  .num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
   }
 }
 
@@ -44,23 +154,39 @@
 
 @layer utilities {
   .skeleton-shimmer {
-    background: linear-gradient(90deg, #0e0e1a 25%, #1e1e3a 50%, #0e0e1a 75%);
+    background: linear-gradient(
+      90deg,
+      var(--color-surface) 25%,
+      var(--color-raised) 50%,
+      var(--color-surface) 75%
+    );
     background-size: 400% 100%;
     animation: shimmer 1.8s ease-in-out infinite;
   }
 
   .scrollbar-thin {
     scrollbar-width: thin;
-    scrollbar-color: #1e1e3a #080812;
+    scrollbar-color: var(--color-line-bright) transparent;
   }
   .scrollbar-thin::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
   }
   .scrollbar-thin::-webkit-scrollbar-track {
-    background: #080812;
+    background: transparent;
   }
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    background: #1e1e3a;
-    border-radius: 2px;
+    background: var(--color-line-bright);
+    border-radius: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

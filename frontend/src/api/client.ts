@@ -46,6 +46,8 @@ export interface EloRating {
   rank: number
   team_name: string
   elo: number
+  country: string | null
+  roster: string[]
 }
 
 export interface EloRatingsResponse {
