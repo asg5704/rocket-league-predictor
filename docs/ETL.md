@@ -70,6 +70,18 @@ correct names for the new players.
 Each step reads the previous step's output. Run them in this exact order —
 later steps depend on artifacts written by earlier ones.
 
+### 4-pre. Check team-name aliases
+
+Ballchasing team names are free text, so one org can show up under several
+spellings. After a download, list the distinct names
+(`pd.read_parquet("data/processed/matches.parquet")` → union of
+`blue_team_name` / `orange_team_name`) and look for near-duplicates (e.g.
+"NRG" vs "NRG ESPORTS"). Add any to `ALIASES` in
+`src/data_collection/team_aliases.py` (alias → canonical full name), then run
+`python -m src.data_collection.team_aliases` to rewrite the existing parquet.
+New downloads are canonicalised automatically at parse time. Also add any new
+team to `data/processed/team_countries.json`.
+
 ### 4a. Elo ratings
 
 ```bash
