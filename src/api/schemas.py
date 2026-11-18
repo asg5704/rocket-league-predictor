@@ -73,6 +73,8 @@ class EloRatingOut(BaseModel):
     rank: int
     team_name: str
     elo: float
+    country: str | None = None  # lowercase ISO 3166-1 alpha-2, e.g. "us"
+    roster: list[str] = Field(default_factory=list)
 
 
 class EloRatingsResponse(BaseModel):

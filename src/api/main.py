@@ -70,6 +70,46 @@ def _load_player_teams(player_stats_path: Path, matches_path: Path) -> pd.DataFr
     )
 
 
+def _load_team_rosters(
+    player_stats_path: Path,
+    matches_path: Path,
+    player_names: dict[str, str],
+) -> dict[str, list[str]]:
+    """Return team_name → display names of the lineup in the team's latest match."""
+    ps = pd.read_parquet(player_stats_path)[["match_id", "player_id", "team_side"]]
+    matches = pd.read_parquet(matches_path)[
+        ["match_id", "date", "blue_team_name", "orange_team_name"]
+    ]
+    merged = ps.merge(matches, on="match_id")
+    merged["date"] = pd.to_datetime(merged["date"], utc=True)
+    merged["team_name"] = merged["blue_team_name"].where(
+        merged["team_side"] == "blue", merged["orange_team_name"]
+    )
+    latest = merged.groupby("team_name")["date"].transform("max")
+    current = merged[merged["date"] == latest]
+    return {
+        team: sorted(
+            {player_names.get(pid, pid) for pid in grp["player_id"]},
+            key=str.lower,
+        )
+        for team, grp in current.groupby("team_name")
+    }
+
+
+def _load_team_countries(path: Path) -> dict[str, str]:
+    """Return team_name → lowercase ISO 3166-1 alpha-2 code (blank entries skipped)."""
+    if not path.exists():
+        return {}
+    raw = json.loads(path.read_text())
+    fixes = {"uk": "gb"}  # ISO 3166-1 uses "gb" for the United Kingdom
+    codes = {
+        team: code.strip().lower()
+        for team, code in raw.items()
+        if isinstance(code, str) and len(code.strip()) == 2
+    }
+    return {team: fixes.get(code, code) for team, code in codes.items()}
+
+
 def _build_player_index(
     player_names: dict[str, str],
     archetypes_df: pd.DataFrame,
@@ -130,6 +170,10 @@ async def lifespan(app: FastAPI):
     app.state.player_index = player_index
     app.state.optimizer = optimizer
     app.state.elo_model = elo_model
+    app.state.team_rosters = _load_team_rosters(
+        _DATA / "player_stats.parquet", _DATA / "matches.parquet", player_names
+    )
+    app.state.team_countries = _load_team_countries(_DATA / "team_countries.json")
 
     yield
 
@@ -247,8 +291,16 @@ def optimize(req: OptimizeRequest) -> OptimizeResponse:
 def get_elo_ratings() -> EloRatingsResponse:
     """Return all team Elo ratings sorted descending."""
     ratings_df = app.state.elo_model.ratings_df()
+    rosters = app.state.team_rosters
+    countries = app.state.team_countries
     ratings = [
-        EloRatingOut(rank=i + 1, team_name=row["team_name"], elo=round(row["elo"], 2))
+        EloRatingOut(
+            rank=i + 1,
+            team_name=row["team_name"],
+            elo=round(row["elo"], 2),
+            country=countries.get(row["team_name"]),
+            roster=rosters.get(row["team_name"], []),
+        )
         for i, row in ratings_df.iterrows()
     ]
     return EloRatingsResponse(ratings=ratings, total=len(ratings))
