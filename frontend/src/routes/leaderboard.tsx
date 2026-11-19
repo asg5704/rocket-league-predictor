@@ -23,9 +23,10 @@ function Leaderboard() {
           )}
         </h1>
         <p className="mt-2 max-w-2xl text-body">
-          Team strength from every RLCS match in the dataset. Ratings start at
-          1500 and update chronologically with K = 32. A player inherits the
-          rating of their most recent team.
+          Team strength from every RLCS match in the dataset. Every player has their
+          own rating (start 1500, K = 16, updated chronologically). A team's
+          rating is the mean of its current roster, so a roster change moves the
+          ranking immediately.
         </p>
       </header>
 

@@ -26,7 +26,7 @@ from typing import TYPE_CHECKING, Optional
 import pandas as pd
 
 if TYPE_CHECKING:
-    from src.models.elo import EloModel
+    from src.models.elo import PlayerEloModel
 
 STAT_COLS = [
     # core
@@ -223,7 +223,7 @@ def build_features(
     matches: pd.DataFrame,
     player_stats: pd.DataFrame,
     rolling_window: int = 5,
-    elo_model: Optional["EloModel"] = None,
+    elo_model: Optional["PlayerEloModel"] = None,
 ) -> pd.DataFrame:
     """
     Build match-level features for win probability modelling.
@@ -233,7 +233,7 @@ def build_features(
     matches        : DataFrame loaded from matches.parquet
     player_stats   : DataFrame loaded from player_stats.parquet
     rolling_window : number of prior games to average per player (default 5)
-    elo_model      : Optional fitted EloModel. When provided, adds
+    elo_model      : Optional fitted PlayerEloModel (or EloModel). When provided, adds
                      blue_elo, orange_elo, and elo_diff columns.
 
     Returns
@@ -268,7 +268,7 @@ def build_features(
 
 
 if __name__ == "__main__":
-    from src.models.elo import EloModel
+    from src.models.elo import PlayerEloModel
 
     matches_path = Path("data/processed/matches.parquet")
     player_stats_path = Path("data/processed/player_stats.parquet")
@@ -277,7 +277,7 @@ if __name__ == "__main__":
 
     matches = pd.read_parquet(matches_path)
     player_stats = pd.read_parquet(player_stats_path)
-    elo_model = EloModel.load(elo_path)
+    elo_model = PlayerEloModel.load(elo_path)
     print(f"Loaded {len(matches)} matches, {len(player_stats)} player-stat rows\n")
 
     features = build_features(matches, player_stats, rolling_window=5, elo_model=elo_model)

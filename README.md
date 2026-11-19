@@ -31,7 +31,7 @@
 Given a pool of professional Rocket League players, the optimizer ranks every possible trio and tells you which three would make the strongest team. It is an end-to-end data science and engineering project: raw replays go in one end and a deployed web app comes out the other.
 
 - **Real pro data.** Replays from RLCS tournaments, pulled from the [Ballchasing](https://ballchasing.com) API. Ranked ladder matches are out of scope.
-- **Three ideas combined.** Each trio is scored on team Elo, the mix of player archetypes, and a learned synergy score.
+- **Three ideas combined.** Each trio is scored on the players' own Elo, the mix of player archetypes, and a learned synergy score.
 - **Honest about its limits.** The win-probability model is only modestly better than a coin flip (see [Model performance](#model-performance)), and the README says so.
 - **Production-shaped.** FastAPI backend, React frontend, a single multi-stage Docker image, CI dependency auditing, and 269 tests.
 
@@ -132,7 +132,7 @@ PYTHONPATH=. pytest
 | ------ | ------------------ | -------------------------------------- |
 | `GET`  | `/api/players`     | Players available to the optimizer     |
 | `POST` | `/api/optimize`    | Rank trios from a selected player pool |
-| `GET`  | `/api/elo-ratings` | Current team Elo leaderboard           |
+| `GET`  | `/api/elo-ratings` | Team leaderboard (roster mean of player Elo) |
 
 With the backend running, interactive docs are served by FastAPI at `/docs` unless disabled in production.
 

@@ -13,7 +13,7 @@ The scoring function for each candidate trio is:
 Where:
   synergy        — synergy score from SynergyScoreModel (0 if trio unseen)
   archetype_bonus — reward for balanced archetypes, penalty for imbalanced
-  normalized_elo  — mean ELO of the three players' current teams, z-scored
+  normalized_elo  — mean of the three players' own Elo ratings, z-scored
                     across all players in the pool
 
 All C(n, 3) combos are evaluated; the top-k results are returned.
@@ -51,8 +51,8 @@ Notes
 -----
 - Trios not seen in SynergyScoreModel.fit() receive synergy=0 and
   low_sample=True (treat as neutral, not missing).
-- ELO lookup is per-team-name. Players whose team is unknown get
-  elo_model.initial_rating.
+- ELO lookup is per-player (PlayerEloModel.rating). Players with no rating
+  get elo_model.initial_rating.
 - Weights are configurable at construction time.
 """
 
@@ -64,7 +64,7 @@ from typing import Optional, TypedDict
 import numpy as np
 import pandas as pd
 
-from src.models.elo import EloModel
+from src.models.elo import PlayerEloModel
 from src.models.synergy_score import SynergyScoreModel
 
 # Archetype bonus table — reward balanced, penalise stacked roles
@@ -108,8 +108,8 @@ class TeamOptimizer:
     synergy_model   : Fitted SynergyScoreModel
     archetypes_df   : DataFrame with columns [player_id, archetype]
     player_teams_df : DataFrame with columns [player_id, team_name].
-                      Maps players to their team so ELO can be looked up.
-    elo_model       : Optional fitted EloModel. When absent, ELO term is zero.
+                      Kept for API compatibility; Elo no longer depends on team.
+    elo_model       : Optional fitted PlayerEloModel. When absent, ELO term is zero.
     weights         : Dict with keys "synergy", "archetype", "elo".
                       Controls relative importance of each component.
     """
@@ -119,7 +119,7 @@ class TeamOptimizer:
         synergy_model: SynergyScoreModel,
         archetypes_df: pd.DataFrame,
         player_teams_df: pd.DataFrame,
-        elo_model: Optional[EloModel] = None,
+        elo_model: Optional[PlayerEloModel] = None,
         weights: Optional[dict[str, float]] = None,
     ):
         self._synergy = synergy_model
@@ -208,17 +208,10 @@ class TeamOptimizer:
     # ------------------------------------------------------------------
 
     def _pool_elos(self, player_pool: list[str]) -> dict[str, float]:
-        """Return ELO rating for each player (via their team)."""
-        result = {}
-        for pid in player_pool:
-            if self._elo is None:
-                result[pid] = 0.0
-            else:
-                team = self._team_map.get(pid)
-                result[pid] = (
-                    self._elo.rating(team) if team else self._elo.initial_rating
-                )
-        return result
+        """Return each player's own Elo rating (unknown players get the initial rating)."""
+        if self._elo is None:
+            return {pid: 0.0 for pid in player_pool}
+        return {pid: self._elo.rating(pid) for pid in player_pool}
 
     def _score_trio(
         self,
@@ -293,7 +286,7 @@ if __name__ == "__main__":
     archetypes_df = pd.read_parquet(archetypes_path)
     player_stats_df = pd.read_parquet(player_stats_path)
     matches_df = pd.read_parquet(matches_path)
-    elo_model = EloModel.load(elo_path)
+    elo_model = PlayerEloModel.load(elo_path)
 
     # Build player → team_name from most recent match appearance
     # team_side tells us blue/orange; join onto matches to get the name

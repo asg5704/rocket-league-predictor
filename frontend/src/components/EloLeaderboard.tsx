@@ -9,8 +9,8 @@ const COLS =
   "grid-cols-[1.5rem_1.25rem_minmax(0,1fr)_5.5rem_2.75rem] sm:grid-cols-[3rem_4rem_minmax(0,1fr)_minmax(0,1.4fr)_4rem_7rem]";
 
 function EloBar({ elo }: { elo: number }) {
-  const min = 1350;
-  const max = 1700;
+  const min = 1425;
+  const max = 1600;
   const pct = Math.max(0, Math.min(100, ((elo - min) / (max - min)) * 100));
   return (
     <div aria-hidden="true" className="h-2 w-full -skew-x-[18deg] bg-line">

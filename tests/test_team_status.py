@@ -8,7 +8,7 @@ from fastapi.testclient import TestClient
 
 from src.api.main import app
 from src.api.team_status import TeamInfo, load_team_info, validate_team_info
-from src.models.elo import EloModel
+import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -43,7 +43,8 @@ def test_validate_reports_problems():
 
 def test_real_team_status_file_is_valid():
     raw = json.loads((ROOT / "data" / "processed" / "team_status.json").read_text())
-    known = set(EloModel.load(ROOT / "data" / "models" / "elo.pkl").ratings_df()["team_name"])
+    m = pd.read_parquet(ROOT / "data" / "processed" / "matches.parquet")
+    known = set(m["blue_team_name"]) | set(m["orange_team_name"])
     assert validate_team_info(raw, known) == []
 
 

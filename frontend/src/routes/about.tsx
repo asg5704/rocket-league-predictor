@@ -203,13 +203,16 @@ function About() {
 
           <Section icon={<TrendingUp size={20} />} title="Elo Leaderboard">
             <p>
-              Shows team strength computed from all 328 RLCS match outcomes
-              (2025–2026 seasons). Elo updates chronologically each match shifts
-              ratings by up to 32 points.
+              Every player has their own Elo rating, computed from all 328 RLCS
+              match outcomes (2025–2026 seasons). A side's rating in a match is
+              the mean of its three players; after the match each player moves by
+              up to 16 points.
             </p>
             <p>
-              Player Elo is inherited from their most recent team, so a player
-              who transferred carries their new team's rating.
+              A team's rating is the mean of its current roster, so a player who
+              transferred takes their rating with them and both teams re-rank.
+              Players who always play together end up with near-identical
+              ratings, so individual ratings only separate through roster moves.
             </p>
           </Section>
 
