@@ -1,6 +1,21 @@
 [
   {
     "date": "2026-11-18",
+    "title": "Per-player Elo (K=16)",
+    "matches": 328,
+    "players": 121,
+    "teams": 41,
+    "silhouette": 0.12,
+    "xgboostAccuracy": 0.54,
+    "xgboostRocAuc": 0.593,
+    "top3": [
+      "Team Falcons",
+      "Team Vitality",
+      "Gentle Mates"
+    ]
+  },
+  {
+    "date": "2026-11-18",
     "title": "Team-name alias cleanup",
     "matches": 328,
     "players": 121,

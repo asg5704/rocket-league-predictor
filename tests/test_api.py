@@ -125,9 +125,12 @@ class TestGetEloRatings:
             elos = [r["elo"] for r in group]
             assert elos == sorted(elos, reverse=True)
 
-    def test_gentle_mates_is_top_team(self, client):
-        top = client.get("/api/elo-ratings").json()["ratings"][0]
-        assert top["team_name"] == "GENTLE MATES"
+    def test_top_team_is_rank_one_and_highest_rated_active(self, client):
+        # Which team leads changes with every retrain, so assert structure, not a name.
+        ratings = client.get("/api/elo-ratings").json()["ratings"]
+        active = [r for r in ratings if r["rank"] is not None]
+        assert active[0]["rank"] == 1
+        assert active[0]["elo"] == max(r["elo"] for r in active)
 
     def test_elo_values_around_1500(self, client):
         # All ratings should be in a reasonable range around the 1500 baseline

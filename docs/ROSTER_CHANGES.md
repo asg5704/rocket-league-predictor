@@ -25,7 +25,7 @@ Edit `data/players/roster_overrides.json`:
 | Field | Required | Notes |
 |---|---|---|
 | `player` | yes | Display name as shown in the app. Case-insensitive. Must match exactly one player. |
-| `team` | yes | Matched case-insensitively (and through the alias map) to teams that already have an Elo, so `Wildcard` inherits `WILDCARD`'s rating. A new org starts at the default rating of 1500. |
+| `team` | yes | Matched case-insensitively (and through the alias map) to teams that already have an Elo, so `Wildcard` is treated as `WILDCARD`. Ratings belong to players, so a moved player keeps their own rating and the team's rating is the mean of its roster. A team with no match history is not on the leaderboard. |
 | `effective` | yes | `YYYY-MM-DD`. If a player has several entries, the latest date wins. |
 | `note` | no | Free text. Ignored by the app. |
 
@@ -48,7 +48,7 @@ Team metadata lives in `data/processed/team_status.json`:
   `src/data_collection/team_aliases.py` so history and Elo carry over.
 - **The team's story ends** (disbanded, brand absorbed, players scattered): set
   `"status": "defunct"`. The team leaves the ranking and appears under
-  "Inactive teams" on the leaderboard; its Elo stays in the model as history.
+  "Inactive teams" on the leaderboard; its players' ratings stay in the model as history.
   Move its players with overrides (a new team, or `null`).
 - `country` is a 2-letter ISO code (`gb` for the UK). Teams missing from the
   file are active with no flag. `tests/test_team_status.py` validates the file.
@@ -85,12 +85,13 @@ Restart the API locally to pick up edits.
 
 ## Caveats
 
-- **Elo is still team-based.** A moved player takes on the Elo of the team you
-  assign, so their old team's rating no longer follows them. A team whose roster
-  changed keeps its old rating. Per-player Elo is the planned fix.
+- **Elo is per-player.** A moved player keeps their own rating; each team's
+  rating is the mean of its current roster, so both the old and new team re-rank
+  at once. A team with fewer than three players is rated on whoever is listed.
+  Players with no replays (manual players) are rated 1500.
 - **Overrides always win over replay data.** They are applied on top of the
   replay-derived team, so a stale entry will keep overriding a later real move.
   After ingesting new replays (see [ETL.md](ETL.md)), delete the entries for
   players who have since played for their new team.
-- Overrides change only the team shown and used for Elo. Archetypes and synergy
+- Overrides change only the team shown and the roster used for team ratings. Archetypes and synergy
   stay tied to the player's historical stats.

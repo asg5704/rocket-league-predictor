@@ -88,8 +88,14 @@ team to `data/processed/team_status.json` (country, and `"status": "defunct"` if
 python -m src.models.elo
 ```
 
-Reads `data/processed/matches.parquet` → writes
-`data/processed/elo_ratings.parquet` and `data/models/elo.pkl`.
+Fits per-player Elo (K=16) from `data/processed/matches.parquet` and
+`player_stats.parquet` → writes `data/processed/elo_ratings.parquet` (per-match
+pre-match snapshots) and `data/models/elo.pkl` (a `PlayerEloModel`; the old
+team-level pickle will not load). The team leaderboard is not stored: the API
+derives it at startup from current rosters.
+
+Optional: `PYTHONPATH=. python scripts/backtest_player_elo.py --k 16 24 32`
+compares team vs player Elo on held-out matches.
 
 ### 4b. Rebuild features
 
@@ -98,7 +104,7 @@ python -m src.features.feature_engineer
 ```
 
 Reads `data/processed/matches.parquet`, `player_stats.parquet`, and
-`data/models/elo.pkl` (must exist — run step 4a first) → writes
+`data/models/elo.pkl` (a player-level model; must exist — run step 4a first) → writes
 `data/processed/features.parquet`.
 
 ### 4c. Win probability model
@@ -164,6 +170,19 @@ Add a new entry at the **top** of `frontend/src/data/model_changelog.json`
 `cv_results.json`, silhouette from `archetype_results.json`, and the new top 3).
 The About page renders it automatically. Also update the hardcoded counts in
 `frontend/src/routes/about.tsx` (matches, players, teams, silhouette).
+
+### 4i. (Optional) Synergy diagnostics
+
+```bash
+PYTHONPATH=. python scripts/synergy_diagnostics.py --json /tmp/synergy_diagnostics.json
+```
+
+Reads `matches.parquet`, `player_stats.parquet`, `synergy_scores.parquet`, and
+`data/models/elo.pkl`. Reports which team stats predict winning, whether playstyle
+similarity relates to synergy, whether synergy's spread exceeds pure luck, and how
+much synergy overlaps with team strength. Re-run after each retrain: the numbers
+that matter are the noise check (observed SD vs the pure-luck band) and the Elo
+overlap. Elo overlap is in-sample, so read it as an upper bound.
 
 ---
 

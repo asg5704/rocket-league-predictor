@@ -28,7 +28,7 @@ const TOP_K = 5;
 const SIDE_TAB =
   "min-h-12 px-4 font-display text-lg font-bold uppercase tracking-wider text-muted transition-colors hover:bg-surface hover:text-ink data-[state=active]:bg-surface data-[state=active]:text-ink data-[state=active]:shadow-[inset_0_-3px_0_var(--color-boost)]";
 
-export function Index() {
+function Index() {
   const {
     data: playersData,
     loading: playersLoading,

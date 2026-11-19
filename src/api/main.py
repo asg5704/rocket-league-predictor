@@ -5,7 +5,7 @@ Endpoints
 ---------
     GET  /api/players       — All known players with archetype, team, and Elo
     POST /api/optimize      — Given a player pool, return the top-k lineups
-    GET  /api/elo-ratings   — Team Elo leaderboard
+    GET  /api/elo-ratings   — Team leaderboard (mean of current roster's player Elo)
 
 All models are loaded once at startup via the lifespan context manager and
 stored on app.state. No model I/O happens during request handling.
@@ -45,7 +45,7 @@ from src.api.roster_overrides import (
     load_overrides,
     merge_rosters,
 )
-from src.models.elo import EloModel
+from src.models.elo import PlayerEloModel
 from src.models.synergy_score import SynergyScoreModel
 from src.models.team_optimizer import TeamOptimizer
 
@@ -61,30 +61,28 @@ _MANUAL_PLAYERS = _ROOT / "data" / "players" / "manual_players.json"
 # ---------------------------------------------------------------------------
 
 def _load_player_teams(player_stats_path: Path, matches_path: Path) -> pd.DataFrame:
-    """Return DataFrame[player_id, team_name] using most recent appearance."""
+    """Return DataFrame[player_id, team_name] using most recent appearance (by match date)."""
     ps = pd.read_parquet(player_stats_path)[["match_id", "player_id", "team_side"]]
     matches = pd.read_parquet(matches_path)[
-        ["match_id", "blue_team_name", "orange_team_name"]
+        ["match_id", "date", "blue_team_name", "orange_team_name"]
     ]
     merged = ps.merge(matches, on="match_id")
-    merged["team_name"] = merged.apply(
-        lambda r: r["blue_team_name"] if r["team_side"] == "blue" else r["orange_team_name"],
-        axis=1,
+    merged["date"] = pd.to_datetime(merged["date"], utc=True)
+    merged["team_name"] = merged["blue_team_name"].where(
+        merged["team_side"] == "blue", merged["orange_team_name"]
     )
     return (
-        merged.sort_values("match_id")
+        merged.sort_values(["date", "match_id"], kind="stable")
         .groupby("player_id")["team_name"]
         .last()
         .reset_index()
     )
 
 
-def _load_team_rosters(
-    player_stats_path: Path,
-    matches_path: Path,
-    player_names: dict[str, str],
+def _load_team_lineups(
+    player_stats_path: Path, matches_path: Path
 ) -> dict[str, list[str]]:
-    """Return team_name → display names of the lineup in the team's latest match."""
+    """Return team_name → player_ids of the lineup in the team's latest match."""
     ps = pd.read_parquet(player_stats_path)[["match_id", "player_id", "team_side"]]
     matches = pd.read_parquet(matches_path)[
         ["match_id", "date", "blue_team_name", "orange_team_name"]
@@ -97,19 +95,29 @@ def _load_team_rosters(
     latest = merged.groupby("team_name")["date"].transform("max")
     current = merged[merged["date"] == latest]
     return {
-        team: sorted(
-            {player_names.get(pid, pid) for pid in grp["player_id"]},
-            key=str.lower,
-        )
+        team: sorted(set(grp["player_id"]), key=str.lower)
         for team, grp in current.groupby("team_name")
     }
+
+
+def _team_rating_rosters(
+    id_rosters: dict[str, list[str]],
+    lineups: dict[str, list[str]],
+    teams: set[str],
+) -> dict[str, list[str]]:
+    """
+    Player-id roster used to rate each team: the current roster (lineup plus
+    overrides). A team whose roster is empty after overrides (e.g. a defunct
+    org) falls back to its last lineup, so it still has a rating to display.
+    """
+    return {t: id_rosters.get(t) or lineups.get(t, []) for t in teams}
 
 
 def _build_player_index(
     player_names: dict[str, str],
     archetypes_df: pd.DataFrame,
     player_teams_df: pd.DataFrame,
-    elo_model: EloModel,
+    elo_model: PlayerEloModel,
 ) -> dict[str, PlayerOut]:
     """
     Build a player_id → PlayerOut lookup used by both /players and /optimize.
@@ -120,7 +128,7 @@ def _build_player_index(
     index: dict[str, PlayerOut] = {}
     for pid, display_name in player_names.items():
         team = team_map.get(pid)
-        elo = elo_model.rating(team) if team else elo_model.initial_rating
+        elo = elo_model.rating(pid)
         index[pid] = PlayerOut(
             player_id=pid,
             display_name=display_name,
@@ -144,9 +152,11 @@ async def lifespan(app: FastAPI):
         if not any(kw in name.lower() for kw in _DUMMY_KEYWORDS)
     }
     player_names.update(load_manual_players(_MANUAL_PLAYERS, player_names))
-    elo_model = EloModel.load(_MODELS / "elo.pkl")
+    elo_model = PlayerEloModel.load(_MODELS / "elo.pkl")
     synergy_model = SynergyScoreModel.load(_MODELS / "synergy_score.pkl")
     archetypes_df = pd.read_parquet(_DATA / "player_archetypes.parquet")
+    matches_df = pd.read_parquet(_DATA / "matches.parquet")
+    known_teams = set(matches_df["blue_team_name"]) | set(matches_df["orange_team_name"])
     player_teams_df = _load_player_teams(
         _DATA / "player_stats.parquet",
         _DATA / "matches.parquet",
@@ -156,7 +166,7 @@ async def lifespan(app: FastAPI):
         replay_teams_df,
         player_names,
         load_overrides(_ROSTER_OVERRIDES),
-        known_teams=set(elo_model.ratings_df()["team_name"]),
+        known_teams=known_teams,
     )
 
     player_index = _build_player_index(
@@ -173,13 +183,21 @@ async def lifespan(app: FastAPI):
     app.state.player_index = player_index
     app.state.optimizer = optimizer
     app.state.elo_model = elo_model
-    app.state.team_rosters = merge_rosters(
-        _load_team_rosters(
-            _DATA / "player_stats.parquet", _DATA / "matches.parquet", player_names
-        ),
+    lineups = _load_team_lineups(_DATA / "player_stats.parquet", _DATA / "matches.parquet")
+    id_rosters = merge_rosters(
+        lineups,
         replay_teams_df,
         player_teams_df,
-        player_names,
+        {pid: pid for pid in player_names},
+    )
+    app.state.team_rosters = {
+        team: sorted((player_names.get(p, p) for p in ids), key=str.lower)
+        for team, ids in id_rosters.items()
+    }
+    # Team leaderboard is derived: mean of the current roster's player ratings,
+    # so a roster change moves the ranking immediately.
+    app.state.team_ratings = elo_model.team_ratings(
+        _team_rating_rosters(id_rosters, lineups, known_teams)
     )
     app.state.team_info = load_team_info(_DATA / "team_status.json")
 
@@ -297,8 +315,8 @@ def optimize(req: OptimizeRequest) -> OptimizeResponse:
 
 @app.get("/api/elo-ratings", response_model=EloRatingsResponse)
 def get_elo_ratings() -> EloRatingsResponse:
-    """Return all team Elo ratings sorted descending."""
-    ratings_df = app.state.elo_model.ratings_df()
+    """Return team ratings (mean of current roster's player Elo), sorted descending."""
+    ratings_df = app.state.team_ratings
     rosters = app.state.team_rosters
     info: dict[str, TeamInfo] = app.state.team_info
     rows = []

@@ -45,9 +45,10 @@ def _make_synergy_model(scores: dict[tuple, float], min_matches: int = 5):
 
 
 def _make_elo_model(ratings: dict[str, float], initial: float = 1500.0):
+    """Mock PlayerEloModel: ratings keyed by player_id."""
     mock = MagicMock()
     mock.initial_rating = initial
-    mock.rating.side_effect = lambda team: ratings.get(team, initial)
+    mock.rating.side_effect = lambda pid: ratings.get(pid, initial)
     return mock
 
 
@@ -74,7 +75,7 @@ PLAYER_TEAMS = _make_player_teams(
     }
 )
 
-ELO_RATINGS = {"TEAM_1": 1600.0, "TEAM_2": 1500.0, "TEAM_3": 1400.0}
+ELO_RATINGS = {"A": 1600.0, "B": 1600.0, "C": 1500.0, "D": 1500.0, "E": 1400.0, "F": 1400.0}
 
 SYNERGY_SCORES = {
     ("A", "B", "C"): 0.15,
@@ -221,8 +222,8 @@ class TestArchetypeBonus:
 # ---------------------------------------------------------------------------
 
 class TestEloIntegration:
-    def test_mean_elo_computed_from_team(self, optimizer):
-        # A and B are on TEAM_1 (elo 1600), C on TEAM_2 (elo 1500)
+    def test_mean_elo_is_mean_of_player_ratings(self, optimizer):
+        # A and B rated 1600, C rated 1500
         results = optimizer.optimize(["A", "B", "C"], top_k=1)
         expected_mean = (1600 + 1600 + 1500) / 3
         assert results[0]["mean_elo"] == pytest.approx(expected_mean, abs=0.1)
@@ -249,7 +250,21 @@ class TestEloIntegration:
         results = opt.optimize(["A", "B", "C"], top_k=1)
         assert results[0]["mean_elo"] == pytest.approx(0.0)
 
-    def test_unknown_team_gets_initial_rating(self):
+    def test_elo_ignores_team_assignment(self):
+        """Moving a player to another team must not change the lineup's Elo."""
+        moved = _make_player_teams(
+            {"A": "TEAM_3", "B": "TEAM_1", "C": "TEAM_2", "D": "TEAM_2", "E": "TEAM_3", "F": "TEAM_3"}
+        )
+        opt = TeamOptimizer(
+            synergy_model=_make_synergy_model({}),
+            archetypes_df=ARCHETYPES,
+            player_teams_df=moved,
+            elo_model=_make_elo_model(ELO_RATINGS),
+        )
+        results = opt.optimize(["A", "B", "C"], top_k=1)
+        assert results[0]["mean_elo"] == pytest.approx((1600 + 1600 + 1500) / 3, abs=0.1)
+
+    def test_unrated_player_gets_initial_rating(self):
         archetypes = _make_archetypes({"X": "flex", "Y": "flex", "Z": "flex"})
         player_teams = _make_player_teams({"X": "UNKNOWN", "Y": "UNKNOWN", "Z": "UNKNOWN"})
         synergy = _make_synergy_model({})
@@ -287,8 +302,8 @@ class TestWeights:
             )
 
     def test_custom_weights_change_ranking(self):
-        # A → ELITE (2000), B → MID (1500), C → LOW (1000), D → ELITE (2000)
-        # Mean ELO: (A,B,C)=1500, (A,B,D)=1833 → D's team is elite
+        # A=2000, B=1500, C=1000, D=2000
+        # Mean ELO: (A,B,C)=1500, (A,B,D)=1833 → D is the stronger player
         # Synergy: (A,B,C)=+0.5 (good), (A,B,D)=-0.5 (bad)
         archetypes = _make_archetypes(
             {"A": "anchor", "B": "flex", "C": "striker", "D": "anchor"}
@@ -299,7 +314,7 @@ class TestWeights:
         synergy = _make_synergy_model(
             {("A", "B", "C"): 0.5, ("A", "B", "D"): -0.5}
         )
-        elo = _make_elo_model({"ELITE": 2000, "MID": 1500, "LOW": 1000})
+        elo = _make_elo_model({"A": 2000, "B": 1500, "C": 1000, "D": 2000})
 
         opt_synergy_first = TeamOptimizer(
             synergy_model=synergy,
